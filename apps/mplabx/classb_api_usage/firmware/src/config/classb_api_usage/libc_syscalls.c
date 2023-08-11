@@ -1,6 +1,6 @@
-# coding: utf-8
-"""*****************************************************************************
-* Copyright (C) 2021 Microchip Technology Inc. and its subsidiaries.
+// DOM-IGNORE-BEGIN
+/*******************************************************************************
+* Copyright (C) 2018 Microchip Technology Inc. and its subsidiaries.
 *
 * Subject to your compliance with these terms, you may use Microchip software
 * and any derivatives exclusively with Microchip products. It is your
@@ -20,15 +20,42 @@
 * FULLEST EXTENT ALLOWED BY LAW, MICROCHIP'S TOTAL LIABILITY ON ALL CLAIMS IN
 * ANY WAY RELATED TO THIS SOFTWARE WILL NOT EXCEED THE AMOUNT OF FEES, IF ANY,
 * THAT YOU HAVE PAID DIRECTLY TO MICROCHIP FOR THIS SOFTWARE.
-*****************************************************************************"""
-supportedDevices = ["PIC32CM"]
-notSupportedVariants = []
+*******************************************************************************/
+// DOM-IGNORE-END
 
-def loadModule():
-    print("Load Module: Harmony Class B Library")
-    device_name = Variables.get("__PROCESSOR")
-    for x in supportedDevices:
-        if x in device_name:
-            if device_name not in notSupportedVariants:
-                classBComponent = Module.CreateComponent("lib_classb_pic32cm_jh", "Class B Library PIC32CM_JH", "/ClassB/", "config/classb_pic32cm_jh.py")
+#include <stdio.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <stdbool.h>
+#include "device.h" /* for ARM CMSIS __BKPT() */
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+
+/* MISRAC 2012 deviation block start */
+/* MISRA C-2012 Rule 21.2 deviated twice.  Deviation record ID -  H3_MISRAC_2012_R_21_2_DR_1 */
+/* Harmony specific
+ * We implement only the syscalls we want over the stubs provided by libpic32c
+ */
+extern void _exit(int status);
+
+void _exit(int status)
+{
+    /* Software breakpoint */
+#ifdef __DEBUG
+    __BKPT(0);
+#endif
+
+    /* halt CPU */
+    while (true)
+    {
+    }
+}
+
+#ifdef __cplusplus
+}
+#endif
+
+/* MISRAC 2012 deviation block end */

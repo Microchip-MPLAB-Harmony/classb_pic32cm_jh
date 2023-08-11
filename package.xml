@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<Package name="replaceme">
-    <Dependencies>
-    </Dependencies>
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Package name="classb_pic32cm_jh">
 </Package>
+

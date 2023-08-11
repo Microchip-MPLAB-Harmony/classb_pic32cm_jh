@@ -1,6 +1,22 @@
-# coding: utf-8
-"""*****************************************************************************
-* Copyright (C) 2021 Microchip Technology Inc. and its subsidiaries.
+/*******************************************************************************
+  EVSYS Peripheral Library
+
+  Company:
+    Microchip Technology Inc.
+
+  File Name:
+    plib_evsys.c
+
+  Summary:
+    EVSYS Source File
+
+  Description:
+    None
+
+*******************************************************************************/
+
+/*******************************************************************************
+* Copyright (C) 2018 Microchip Technology Inc. and its subsidiaries.
 *
 * Subject to your compliance with these terms, you may use Microchip software
 * and any derivatives exclusively with Microchip products. It is your
@@ -20,15 +36,17 @@
 * FULLEST EXTENT ALLOWED BY LAW, MICROCHIP'S TOTAL LIABILITY ON ALL CLAIMS IN
 * ANY WAY RELATED TO THIS SOFTWARE WILL NOT EXCEED THE AMOUNT OF FEES, IF ANY,
 * THAT YOU HAVE PAID DIRECTLY TO MICROCHIP FOR THIS SOFTWARE.
-*****************************************************************************"""
-supportedDevices = ["PIC32CM"]
-notSupportedVariants = []
+*******************************************************************************/
 
-def loadModule():
-    print("Load Module: Harmony Class B Library")
-    device_name = Variables.get("__PROCESSOR")
-    for x in supportedDevices:
-        if x in device_name:
-            if device_name not in notSupportedVariants:
-                classBComponent = Module.CreateComponent("lib_classb_pic32cm_jh", "Class B Library PIC32CM_JH", "/ClassB/", "config/classb_pic32cm_jh.py")
+#include "plib_evsys.h"
+#include "interrupts.h"
+
+
+void EVSYS_Initialize( void )
+{    /*Event Channel User Configuration*/
+
+
+}
+
+
 
