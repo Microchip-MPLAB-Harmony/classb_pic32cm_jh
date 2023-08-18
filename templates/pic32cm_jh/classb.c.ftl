@@ -73,8 +73,10 @@ volatile uint32_t * interrupt_count;
 /*----------------------------------------------------------------------------
  *     Functions
  *----------------------------------------------------------------------------*/
+<#if CLASSB_SRAM_ECC_OPT??>
+    <#if CLASSB_SRAM_ECC_OPT == true>
 /*============================================================================
-void CLASSB_RAM_CallbackRoutine(uint32_t status, uintptr_t context)
+void CLASSB_SRAM_Callback(uint32_t status, uintptr_t context)
 ------------------------------------------------------------------------------
 Purpose: Called if a single fault error detected by SRAM ECC.
 Input  : None.
@@ -82,16 +84,23 @@ Output : None
 Notes  : The application decides the contents of this function.
          This function must not return.
 ============================================================================*/
-void CLASSB_RAM_CallbackRoutine(uint32_t status, uintptr_t context) {
-    // SRAM ECC Error Occured. Stay in infinite loop
-    while(1)
+void CLASSB_SRAM_Callback(uint32_t status, uintptr_t context) {
+#if (defined(__DEBUG) || defined(__DEBUG_D)) && defined(__XC32)
+    __builtin_software_breakpoint();
+#endif
+    // Infinite loop
+    while (1)
     {
         ;
     }
 }
 
+    </#if>
+</#if>
+<#if CLASSB_FLASH_ECC_OPT??>
+    <#if CLASSB_FLASH_ECC_OPT == true>
 /*============================================================================
-void CLASSB_FLASH_CallbackRoutine(uint32_t status, uintptr_t context)
+void CLASSB_FLASH_Callback(uint32_t status, uintptr_t context)
 ------------------------------------------------------------------------------
 Purpose: Called if a single fault error detected by Flash ECC.
 Input  : None
@@ -99,14 +108,19 @@ Output : None
 Notes  : The application decides the contents of this function.
          This function must not return.
 ============================================================================*/
-void CLASSB_FLASH_CallbackRoutine(uint32_t status, uintptr_t context) {
-    // Flash ECC Error Occured. Stay in infinite loop
-    while(1)
+void CLASSB_FLASH_Callback(uint32_t status, uintptr_t context) {
+#if (defined(__DEBUG) || defined(__DEBUG_D)) && defined(__XC32)
+    __builtin_software_breakpoint();
+#endif
+    // Infinite loop
+    while (1)
     {
         ;
     }
 }
 
+    </#if>
+</#if>
 /*============================================================================
 void CLASSB_SelfTest_FailSafe(CLASSB_TEST_ID cb_test_id)
 ------------------------------------------------------------------------------
@@ -410,16 +424,14 @@ static CLASSB_STARTUP_STATUS CLASSB_Startup_Tests(void)
         <#if CLASSB_SRAM_ECC_OPT == true>
             
             <#lt>    // SRAM ECC Initialize
-            <#lt>    *ongoing_sst_id = CLASSB_TEST_RAM;
-            <#lt>    CLASSB_SRAM_EccInit(CLASSB_RAM_CallbackRoutine, 0);
+            <#lt>    CLASSB_SRAM_EccInit(CLASSB_SRAM_Callback, 0);
         </#if>
     </#if>
     <#if CLASSB_FLASH_ECC_OPT??>
         <#if CLASSB_FLASH_ECC_OPT == true>
 
             <#lt>    // FLASH ECC Initialize
-            <#lt>    *ongoing_sst_id = CLASSB_TEST_FLASH;
-            <#lt>    CLASSB_FLASH_EccInit(CLASSB_FLASH_CallbackRoutine, 0);
+            <#lt>    CLASSB_FLASH_EccInit(CLASSB_FLASH_Callback, 0);
         </#if>
     </#if>
     <#if CLASSB_CLOCK_TEST_OPT??>

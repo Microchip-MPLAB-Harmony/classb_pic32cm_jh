@@ -1,5 +1,5 @@
 /*******************************************************************************
-  Class B Library v1.0.2 Release
+  Class B Library v0.1.0 Release
 
   Company:
     Microchip Technology Inc.
@@ -16,7 +16,7 @@
 *******************************************************************************/
 
 /*******************************************************************************
-* Copyright (C) 2021 Microchip Technology Inc. and its subsidiaries.
+* Copyright (C) 2023 Microchip Technology Inc. and its subsidiaries.
 *
 * Subject to your compliance with these terms, you may use Microchip software
 * and any derivatives exclusively with Microchip products. It is your
@@ -111,8 +111,8 @@ typedef enum classb_test_id
 {
     CLASSB_TEST_CPU         = 0U,
     CLASSB_TEST_PC          = 2U,
-    CLASSB_TEST_RAM         = 4U,
-    CLASSB_TEST_FLASH       = 6U,
+    CLASSB_TEST_RESERVE1    = 4U,
+    CLASSB_TEST_RESERVE2    = 6U,
     CLASSB_TEST_CLOCK       = 8U,
     CLASSB_TEST_INTERRUPT   = 10U,
     CLASSB_TEST_IO          = 12U
@@ -213,8 +213,8 @@ typedef struct classb_sst_result_bf
 {
     CLASSB_TEST_STATUS CPU_STATUS:2;
     CLASSB_TEST_STATUS PC_STATUS:2;
-    CLASSB_TEST_STATUS RAM_STATUS:2;
-    CLASSB_TEST_STATUS FLASH_STATUS:2;
+    CLASSB_TEST_STATUS RESERVE1_STATUS:2;
+    CLASSB_TEST_STATUS RESERVE2_STATUS:2;
     CLASSB_TEST_STATUS CLOCK_STATUS:2;
     CLASSB_TEST_STATUS INTERRUPT_STATUS:2;
 } *CLASSB_SST_RESULT_BF;
@@ -235,10 +235,10 @@ typedef struct classb_rst_result_bf
 {
     CLASSB_TEST_STATUS CPU_STATUS:2;
     CLASSB_TEST_STATUS PC_STATUS:2;
-    CLASSB_TEST_STATUS RAM_STATUS:2;
-    CLASSB_TEST_STATUS FLASH_STATUS:2;
+    CLASSB_TEST_STATUS RESERVE1_STATUS:2;
+    CLASSB_TEST_STATUS RESERVE2_STATUS:2;
     CLASSB_TEST_STATUS CLOCK_STATUS:2;
-    CLASSB_TEST_STATUS UNUSED_STATUS:2;
+    CLASSB_TEST_STATUS RESERVE3_STATUS:2;
     CLASSB_TEST_STATUS IO_STATUS:2;
 } *CLASSB_RST_RESULT_BF;
 

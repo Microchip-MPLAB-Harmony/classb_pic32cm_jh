@@ -1,5 +1,5 @@
 /*******************************************************************************
-  Class B Library v1.0.2 Release
+  Class B Library v0.1.0 Release
 
   Company:
     Microchip Technology Inc.
@@ -16,7 +16,7 @@
 *******************************************************************************/
 
 /*******************************************************************************
-* Copyright (C) 2021 Microchip Technology Inc. and its subsidiaries.
+* Copyright (C) 2023 Microchip Technology Inc. and its subsidiaries.
 *
 * Subject to your compliance with these terms, you may use Microchip software
 * and any derivatives exclusively with Microchip products. It is your
@@ -74,7 +74,7 @@ volatile uint32_t * interrupt_count;
  *     Functions
  *----------------------------------------------------------------------------*/
 /*============================================================================
-void CLASSB_RAM_CallbackRoutine(uint32_t status, uintptr_t context)
+void CLASSB_SRAM_Callback(uint32_t status, uintptr_t context)
 ------------------------------------------------------------------------------
 Purpose: Called if a single fault error detected by SRAM ECC.
 Input  : None.
@@ -82,16 +82,19 @@ Output : None
 Notes  : The application decides the contents of this function.
          This function must not return.
 ============================================================================*/
-void CLASSB_RAM_CallbackRoutine(uint32_t status, uintptr_t context) {
-    // SRAM ECC Error Occured. Stay in infinite loop
-    while(1)
+void CLASSB_SRAM_Callback(uint32_t status, uintptr_t context) {
+#if (defined(__DEBUG) || defined(__DEBUG_D)) && defined(__XC32)
+    __builtin_software_breakpoint();
+#endif
+    // Infinite loop
+    while (1)
     {
         ;
     }
 }
 
 /*============================================================================
-void CLASSB_FLASH_CallbackRoutine(uint32_t status, uintptr_t context)
+void CLASSB_FLASH_Callback(uint32_t status, uintptr_t context)
 ------------------------------------------------------------------------------
 Purpose: Called if a single fault error detected by Flash ECC.
 Input  : None
@@ -99,9 +102,12 @@ Output : None
 Notes  : The application decides the contents of this function.
          This function must not return.
 ============================================================================*/
-void CLASSB_FLASH_CallbackRoutine(uint32_t status, uintptr_t context) {
-    // Flash ECC Error Occured. Stay in infinite loop
-    while(1)
+void CLASSB_FLASH_Callback(uint32_t status, uintptr_t context) {
+#if (defined(__DEBUG) || defined(__DEBUG_D)) && defined(__XC32)
+    __builtin_software_breakpoint();
+#endif
+    // Infinite loop
+    while (1)
     {
         ;
     }
@@ -317,7 +323,7 @@ static CLASSB_INIT_STATUS CLASSB_Init(void)
             {
                 *pRam = 0U;
             }
-            
+
             if ((SMBIST_REGS->SMBIST_STATUS & SMBIST_STATUS_FAIL_Msk) == 0)
             {
                 // RAM Test passed. Initialize all Class B variables
@@ -394,12 +400,10 @@ static CLASSB_STARTUP_STATUS CLASSB_Startup_Tests(void)
         }
             
     // SRAM ECC Initialize
-    *ongoing_sst_id = CLASSB_TEST_RAM;
-    CLASSB_SRAM_EccInit(CLASSB_RAM_CallbackRoutine, 0);
+    CLASSB_SRAM_EccInit(CLASSB_SRAM_Callback, 0);
 
     // FLASH ECC Initialize
-    *ongoing_sst_id = CLASSB_TEST_FLASH;
-    CLASSB_FLASH_EccInit(CLASSB_FLASH_CallbackRoutine, 0);
+    CLASSB_FLASH_EccInit(CLASSB_FLASH_Callback, 0);
             
     // Clock Test
     *ongoing_sst_id = CLASSB_TEST_CLOCK;

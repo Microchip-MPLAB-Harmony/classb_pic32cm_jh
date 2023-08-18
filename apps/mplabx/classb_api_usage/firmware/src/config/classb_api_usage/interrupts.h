@@ -57,11 +57,12 @@
 // *****************************************************************************
 // *****************************************************************************
 
+void CLASSB_SRAM_ECC_InterruptHandler (void);
+void CLASSB_FLASH_ECC_InterruptHandler (void);
 void Reset_Handler (void);
 void NonMaskableInt_Handler (void);
 void HardFault_Handler (void);
-void CLASSB_RAM_ECC_InterruptHandler (void);
-void CLASSB_FLASH_ECC_InterruptHandler (void);
+
 
 
 #endif // INTERRUPTS_H

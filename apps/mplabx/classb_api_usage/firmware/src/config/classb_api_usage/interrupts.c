@@ -126,6 +126,8 @@ const H3DeviceVectors exception_table=
     /* Configure Initial Stack Pointer, using linker-generated symbols */
     .pvStack = &_stack,
 
+    .pfnMCRAMC_Handler             = CLASSB_SRAM_ECC_InterruptHandler,
+    .pfnNVMCTRL_Handler            = CLASSB_FLASH_ECC_InterruptHandler,
     .pfnReset_Handler              = Reset_Handler,
     .pfnNonMaskableInt_Handler     = NonMaskableInt_Handler,
     .pfnHardFault_Handler          = HardFault_Handler,
@@ -137,8 +139,8 @@ const H3DeviceVectors exception_table=
     .pfnRTC_Handler                = RTC_Handler,
     .pfnEIC_Handler                = EIC_Handler,
     .pfnFREQM_Handler              = FREQM_Handler,
-    .pfnMCRAMC_Handler             = CLASSB_RAM_ECC_InterruptHandler,
-    .pfnNVMCTRL_Handler            = CLASSB_FLASH_ECC_InterruptHandler,
+    .pfnMCRAMC_Handler             = MCRAMC_Handler,
+    .pfnNVMCTRL_Handler            = NVMCTRL_Handler,
     .pfnDMAC_Handler               = DMAC_Handler,
     .pfnEVSYS_Handler              = EVSYS_Handler,
     .pfnSERCOM0_6_Handler          = SERCOM0_6_Handler,

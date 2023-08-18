@@ -1,5 +1,5 @@
 /*******************************************************************************
-  Class B Library v1.0.2 Release
+  Class B Library v0.1.0 Release
 
   Company:
     Microchip Technology Inc.
@@ -17,7 +17,7 @@
 *******************************************************************************/
 
 /*******************************************************************************
-* Copyright (C) 2021 Microchip Technology Inc. and its subsidiaries.
+* Copyright (C) 2023 Microchip Technology Inc. and its subsidiaries.
 *
 * Subject to your compliance with these terms, you may use Microchip software
 * and any derivatives exclusively with Microchip products. It is your
@@ -63,17 +63,17 @@
 /*----------------------------------------------------------------------------
  *     Data types
  *----------------------------------------------------------------------------*/
-typedef void (*CLASSB_RAM_ECC_CALLBACK)(uint32_t status, uintptr_t context);
+typedef void (*CLASSB_SRAM_ECC_CALLBACK)(uint32_t status, uintptr_t context);
 
 typedef struct
 {
-    CLASSB_RAM_ECC_CALLBACK callback;
+    CLASSB_SRAM_ECC_CALLBACK callback;
     uintptr_t context;
-}CLASSB_RAM_ECC_CALLBACK_OBJ;
+}CLASSB_SRAM_ECC_CALLBACK_OBJ;
 /*----------------------------------------------------------------------------
  *     Functions
  *----------------------------------------------------------------------------*/
-void CLASSB_SRAM_EccInit(CLASSB_RAM_ECC_CALLBACK callback, uintptr_t context);
+void CLASSB_SRAM_EccInit(CLASSB_SRAM_ECC_CALLBACK callback, uintptr_t context);
 
 // DOM-IGNORE-BEGIN
 #ifdef __cplusplus  // Provide C++ Compatibility

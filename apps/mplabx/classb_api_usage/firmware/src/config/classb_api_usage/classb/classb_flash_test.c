@@ -1,5 +1,5 @@
 /*******************************************************************************
-  Class B Library v1.0.2 Release
+  Class B Library v0.1.0 Release
 
   Company:
     Microchip Technology Inc.
@@ -16,7 +16,7 @@
 *******************************************************************************/
 
 /*******************************************************************************
-* Copyright (C) 2021 Microchip Technology Inc. and its subsidiaries.
+* Copyright (C) 2023 Microchip Technology Inc. and its subsidiaries.
 *
 * Subject to your compliance with these terms, you may use Microchip software
 * and any derivatives exclusively with Microchip products. It is your
@@ -107,17 +107,4 @@ void CLASSB_FLASH_EccInit(CLASSB_FLASH_ECC_CALLBACK callback, uintptr_t context)
     
     // Enable Single and Double Fault interrupt
     NVMCTRL_REGS->NVMCTRL_INTENSET = NVMCTRL_INTENSET_SERR_Msk | NVMCTRL_INTENSET_DERR_Msk;
-    
-    if (context == true)
-    {
-        _CLASSB_UpdateTestResult(CLASSB_TEST_TYPE_RST, CLASSB_TEST_FLASH,
-            CLASSB_TEST_INPROGRESS);
-    }
-    else
-    {
-        _CLASSB_UpdateTestResult(CLASSB_TEST_TYPE_SST, CLASSB_TEST_FLASH,
-            CLASSB_TEST_INPROGRESS);
-    }
-    
-    
 }

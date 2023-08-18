@@ -107,17 +107,4 @@ void CLASSB_FLASH_EccInit(CLASSB_FLASH_ECC_CALLBACK callback, uintptr_t context)
     
     // Enable Single and Double Fault interrupt
     NVMCTRL_REGS->NVMCTRL_INTENSET = NVMCTRL_INTENSET_SERR_Msk | NVMCTRL_INTENSET_DERR_Msk;
-    
-    if (context == true)
-    {
-        _CLASSB_UpdateTestResult(CLASSB_TEST_TYPE_RST, CLASSB_TEST_FLASH,
-            CLASSB_TEST_INPROGRESS);
-    }
-    else
-    {
-        _CLASSB_UpdateTestResult(CLASSB_TEST_TYPE_SST, CLASSB_TEST_FLASH,
-            CLASSB_TEST_INPROGRESS);
-    }
-    
-    
 }

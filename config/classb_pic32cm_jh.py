@@ -1,6 +1,6 @@
 # coding: utf-8
 """*****************************************************************************
-* Copyright (C) 2021 Microchip Technology Inc. and its subsidiaries.
+* Copyright (C) 2023 Microchip Technology Inc. and its subsidiaries.
 *
 * Subject to your compliance with these terms, you may use Microchip software
 * and any derivatives exclusively with Microchip products. It is your
@@ -28,40 +28,10 @@
 def setClassB_SymbolVisibility(MySymbol, event):
     MySymbol.setVisible(event["value"])
 
-def generateToolchainDepFiles(MySymbol, event):
-    MySymbol.setValue(event["value"], 1)
-    print(event["value"])
-    if (event["value"] == 0):
-        # Source File for result handling
-        classBSourceResultMgmt.setSourcePath("/templates/pic32cm_jh/classb_result_management_xc32.S.ftl")
-        classBSourceResultMgmt.setOutputName("classb_result_management.S")
-        classBSourceResultMgmt.setDestPath("/classb")
-        classBSourceResultMgmt.setProjectPath("config/" + configName + "/classb")
-        classBSourceResultMgmt.setType("SOURCE")
-        classBSourceResultMgmt.setMarkup(True)
-        
-        classBSourceCpuTestAsm.setSourcePath("/templates/pic32cm_jh/classb_cpu_reg_test_xc32.S.ftl")
-        classBSourceCpuTestAsm.setOutputName("classb_cpu_reg_test.S")
-        classBSourceCpuTestAsm.setDestPath("/classb")
-        classBSourceCpuTestAsm.setProjectPath("config/" + configName + "/classb")
-        classBSourceCpuTestAsm.setType("SOURCE")
-        classBSourceCpuTestAsm.setMarkup(True)
-    else:
-        # Source File for result handling
-        classBSourceResultMgmt.setSourcePath("/templates/pic32cm_jh/classb_result_management_keil.S.ftl")
-        classBSourceResultMgmt.setOutputName("classb_result_management.S")
-        classBSourceResultMgmt.setDestPath("/classb")
-        classBSourceResultMgmt.setProjectPath("config/" + configName + "/classb")
-        classBSourceResultMgmt.setType("SOURCE")
-        classBSourceResultMgmt.setMarkup(True)
-        
-        classBSourceCpuTestAsm.setSourcePath("/templates/pic32cm_jh/classb_cpu_reg_test_keil.S.ftl")
-        classBSourceCpuTestAsm.setOutputName("classb_cpu_reg_test.S")
-        classBSourceCpuTestAsm.setDestPath("/classb")
-        classBSourceCpuTestAsm.setProjectPath("config/" + configName + "/classb")
-        classBSourceCpuTestAsm.setType("SOURCE")
-        classBSourceCpuTestAsm.setMarkup(True)
-        
+#Update Symbol State
+def setClassB_SymbolState(MySymbol, event):
+    MySymbol.setEnabled(event["value"])
+
 ################################################################################
 #### Component ####
 ################################################################################
@@ -104,13 +74,6 @@ def instantiateComponent(classBComponent):
         classB_SRAM_RESERVE_SIZE = classBComponent.createIntegerSymbol("CLASSB_SRAM_RESERVE_SIZE", None)
         classB_SRAM_RESERVE_SIZE.setVisible(False)
         classB_SRAM_RESERVE_SIZE.setDefaultValue(int("64", 10))
-    
-    classB_ToolChainSel = classBComponent.createIntegerSymbol("CLASSB_TOOLCHAIN_SEL", classBMenu)
-    classB_ToolChainSel.setLabel("Toolchain")
-    classB_ToolChainSel.setVisible(False)
-    #classB_ToolChainSel.setReadOnly(True)
-    classB_ToolChainSel.setDefaultValue(Database.getSymbolValue("core", "COMPILER_CHOICE"))
-    classB_ToolChainSel.setDependencies(generateToolchainDepFiles, ["core.COMPILER_CHOICE"])
     
     # Insert CPU test
     classB_UseCPUTest = classBComponent.createBooleanSymbol("CLASSB_CPU_TEST_OPT", classBMenu)
@@ -171,24 +134,23 @@ def instantiateComponent(classBComponent):
     classB_UseInterTest.setDefaultValue(False)
     classB_UseInterTest.setDescription("This self-test check interrupts operation with the help of NVIC, RTC and TC0")
 
-    
     classBReadOnlyParams = classBComponent.createMenuSymbol("CLASSB_ADDR_MENU", None)
     classBReadOnlyParams.setLabel("Build parameters (read-only) used by the library")
     
     # Read-only symbol for start of non-reserved SRAM
     classb_AppRam_start = classBComponent.createHexSymbol("CLASSB_SRAM_APP_START", classBReadOnlyParams)
     classb_AppRam_start.setLabel("Start address of non-reserved SRAM")
-    classb_AppRam_start.setDefaultValue(0x20000040)
+    classb_AppRam_start.setDefaultValue(classB_SRAM_ADDR.getValue() + classB_SRAM_RESERVE_SIZE.getValue())
     classb_AppRam_start.setReadOnly(True)
     classb_AppRam_start.setHelp("Harmony_ClassB_Library_for_PIC32CM_JH00_JH01")
-    classb_AppRam_start.setMin(0x20000040)
-    classb_AppRam_start.setMax(0x20000040)
-    classb_AppRam_start.setDescription("Initial 1kB of SRAM is used by the Class B library")
+    classb_AppRam_start.setMin(classB_SRAM_ADDR.getValue() + classB_SRAM_RESERVE_SIZE.getValue())
+    classb_AppRam_start.setMax(classB_SRAM_ADDR.getValue() + classB_SRAM_RESERVE_SIZE.getValue())
+    classb_AppRam_start.setDescription("Initial " + str(classB_SRAM_RESERVE_SIZE.getValue()) +" bytes of SRAM is used by the Class B library")
     
     # Update value of Global symbols for SRAM
     sram_len_str = str((hex(classb_AppRam_start.getValue())))
     Database.setSymbolValue("core", "IRAM1_START", sram_len_str.strip("L"))
-    Database.setSymbolValue("core", "IRAM1_SIZE", str((hex(classB_SRAM_SIZE.getValue() - 64))))
+    Database.setSymbolValue("core", "IRAM1_SIZE", str((hex(classB_SRAM_SIZE.getValue() - classB_SRAM_RESERVE_SIZE.getValue()))))
       
     # Read-only symbol for max SysTick count
     classb_SysTickMaxCount = classBComponent.createHexSymbol("CLASSB_SYSTICK_MAXCOUNT", classBReadOnlyParams)
@@ -288,7 +250,6 @@ def instantiateComponent(classBComponent):
     classBSourceFile.setProjectPath("config/" + configName + "/classb")
     classBSourceFile.setType("SOURCE")
     classBSourceFile.setMarkup(True)
-    
     
     # Header File common for all tests
     classBCommHeaderFile = classBComponent.createFileSymbol("CLASSB_COMMON_HEADER", None)
@@ -405,7 +366,7 @@ def instantiateComponent(classBComponent):
     classBSystemDefFile.setSourcePath("/templates/system/definitions.h.ftl")
     classBSystemDefFile.setMarkup(True)
 
-    # System Startup Modification to comment RAM_Initialize() # TODO - Tharikida
+    # System Startup Modification to comment RAM_Initialize()
     classBSystemStartupFile = classBComponent.createFileSymbol("CLASSB_SYS_STARTUP", None)
     classBSystemStartupFile.setSourcePath("/templates/startup_xc32.c.ftl")
     classBSystemStartupFile.setOutputName("startup_xc32.c")
@@ -414,10 +375,36 @@ def instantiateComponent(classBComponent):
     classBSystemStartupFile.setType("SOURCE")
     classBSystemStartupFile.setMarkup(True)
 
-    # Linker option to reserve 1kB of SRAM
+    # System SRAM ECC Interrupt Modification to interrupt.c file
+    classBSystemSRAMInterruptCSymbol = classBComponent.createListEntrySymbol("CLASSB_SYS_SRAM_INT_C_SYM", None)
+    classBSystemSRAMInterruptCSymbol.setVisible(False)
+    classBSystemSRAMInterruptCSymbol.addValue("    .pfnMCRAMC_Handler             = CLASSB_SRAM_ECC_InterruptHandler,")
+    classBSystemSRAMInterruptCSymbol.setTarget("core.LIST_SYSTEM_INTERRUPT_HANDLERS")
+    classBSystemSRAMInterruptCSymbol.setDependencies(setClassB_SymbolState, ["CLASSB_SRAM_ECC_OPT"])
+
+    # System SRAM ECC Interrupt Modification to interrupt.h file
+    classBSystemSRAMInterruptHSymbol = classBComponent.createListEntrySymbol("CLASSB_SYS_SRAM_INT_H_SYM", None)
+    classBSystemSRAMInterruptHSymbol.setVisible(False)
+    classBSystemSRAMInterruptHSymbol.addValue("void CLASSB_SRAM_ECC_InterruptHandler (void);")
+    classBSystemSRAMInterruptHSymbol.setTarget("core.LIST_SYSTEM_INTERRUPT_HANDLER_DECLS")
+    classBSystemSRAMInterruptHSymbol.setDependencies(setClassB_SymbolState, ["CLASSB_SRAM_ECC_OPT"])
+
+    # System Flash ECC Interrupt Modification to interrupt.c file
+    classBSystemFlashInterruptCSymbol = classBComponent.createListEntrySymbol("CLASSB_SYS_FLASH_INT_C_SYM", None)
+    classBSystemFlashInterruptCSymbol.setVisible(False)
+    classBSystemFlashInterruptCSymbol.addValue("    .pfnNVMCTRL_Handler            = CLASSB_FLASH_ECC_InterruptHandler,")
+    classBSystemFlashInterruptCSymbol.setTarget("core.LIST_SYSTEM_INTERRUPT_HANDLERS")
+    classBSystemFlashInterruptCSymbol.setDependencies(setClassB_SymbolState, ["CLASSB_FLASH_ECC_OPT"])
+
+    # System Flash ECC Interrupt Modification to interrupt.h file
+    classBSystemFlashInterruptHSymbol = classBComponent.createListEntrySymbol("CLASSB_SYS_FLASH_INT_H_SYM", None)
+    classBSystemFlashInterruptHSymbol.setVisible(False)
+    classBSystemFlashInterruptHSymbol.addValue("void CLASSB_FLASH_ECC_InterruptHandler (void);")
+    classBSystemFlashInterruptHSymbol.setTarget("core.LIST_SYSTEM_INTERRUPT_HANDLER_DECLS")
+    classBSystemFlashInterruptHSymbol.setDependencies(setClassB_SymbolState, ["CLASSB_FLASH_ECC_OPT"])
+    
+    # Linker option to reserve classB reserve size of SRAM
     classB_xc32ld_reserve_sram = classBComponent.createSettingSymbol("CLASSB_XC32LD_RESERVE_SRAM", None)
     classB_xc32ld_reserve_sram.setCategory("C32-LD")
     classB_xc32ld_reserve_sram.setKey("appendMe")
-    classB_xc32ld_reserve_sram.setValue("-DRAM_ORIGIN=" + hex(int(classBSRAMNode.getAttribute("start"),16)+64) + ",-DRAM_LENGTH=" + hex(int(classBSRAMNode.getAttribute("size"),16) - 64))
-    #classB_xc32ld_reserve_sram.setValue("-DRAM_ORIGIN=" + hex(int(classb_AppRam_start,16)+int(classB_SRAM_RESERVE_SIZE,10) + ",-DRAM_LENGTH=" + hex(int(classBSRAMNode.getAttribute("size"),16) - classB_SRAM_RESERVE_SIZE))
-    
+    classB_xc32ld_reserve_sram.setValue("-DRAM_ORIGIN=" + hex(int(classBSRAMNode.getAttribute("start"), 16) + classB_SRAM_RESERVE_SIZE.getValue()) + ",-DRAM_LENGTH=" + hex(int(classBSRAMNode.getAttribute("size"), 16) - classB_SRAM_RESERVE_SIZE.getValue()))

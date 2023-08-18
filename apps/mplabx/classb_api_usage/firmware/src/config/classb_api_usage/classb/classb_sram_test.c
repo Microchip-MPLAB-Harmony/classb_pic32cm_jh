@@ -1,5 +1,5 @@
 /*******************************************************************************
-  Class B Library v1.0.2 Release
+  Class B Library v0.1.0 Release
 
   Company:
     Microchip Technology Inc.
@@ -16,7 +16,7 @@
 *******************************************************************************/
 
 /*******************************************************************************
-* Copyright (C) 2021 Microchip Technology Inc. and its subsidiaries.
+* Copyright (C) 2023 Microchip Technology Inc. and its subsidiaries.
 *
 * Subject to your compliance with these terms, you may use Microchip software
 * and any derivatives exclusively with Microchip products. It is your
@@ -51,7 +51,7 @@
  *     Global Variables
  *----------------------------------------------------------------------------*/
 
-volatile static CLASSB_RAM_ECC_CALLBACK_OBJ CLASSB_RAM_ECC_CallbackObject;
+volatile static CLASSB_SRAM_ECC_CALLBACK_OBJ CLASSB_SRAM_ECC_CallbackObject;
 
 /*----------------------------------------------------------------------------
  *     Functions
@@ -61,34 +61,34 @@ extern void _CLASSB_UpdateTestResult(CLASSB_TEST_TYPE test_type,
     CLASSB_TEST_ID test_id, CLASSB_TEST_STATUS value);
 
 /*============================================================================
-void __attribute__((used)) CLASSB_RAM_ECC_InterruptHandler ( void )
+void __attribute__((used)) CLASSB_SRAM_ECC_InterruptHandler ( void )
 ------------------------------------------------------------------------------
 Purpose: Interrupt Handler for SRAM ECC.
 Input  : None
 Output : None.
 Notes  : None
 ============================================================================*/
-void __attribute__((used)) CLASSB_RAM_ECC_InterruptHandler ( void )
+void __attribute__((used)) CLASSB_SRAM_ECC_InterruptHandler ( void )
 {
-        uint32_t  status;
-        status = MCRAMC_REGS->MCRAMC_INTSTA;
+  uint32_t  status;
+  status = MCRAMC_REGS->MCRAMC_INTSTA;
 
-        /* Clear interrupt */
-        MCRAMC_REGS->MCRAMC_INTSTA = status;
-        while ((MCRAMC_REGS->MCRAMC_INTSTA & status) != 0U)
-        {
-            /* Wait for the interrupt status to clear */
-        ;
-        }
-    if ((CLASSB_RAM_ECC_CallbackObject.callback != NULL) && (status != 0U))
-        {
-            uintptr_t context = CLASSB_RAM_ECC_CallbackObject.context;
-            CLASSB_RAM_ECC_CallbackObject.callback(status, context);
-        }
-    }
+  /* Clear interrupt */
+  MCRAMC_REGS->MCRAMC_INTSTA = status;
+  while ((MCRAMC_REGS->MCRAMC_INTSTA & status) != 0U)
+  {
+      /* Wait for the interrupt status to clear */
+      ;
+  }
+  if ((CLASSB_SRAM_ECC_CallbackObject.callback != NULL) && (status != 0U))
+  {
+      uintptr_t context = CLASSB_SRAM_ECC_CallbackObject.context;
+      CLASSB_SRAM_ECC_CallbackObject.callback(status, context);
+  }
+}
 
 /*============================================================================
-CLASSB_TEST_STATUS CLASSB_SRAM_EccInit(CLASSB_RAM_ECC_CALLBACK callback, uintptr_t context)
+CLASSB_TEST_STATUS CLASSB_SRAM_EccInit(CLASSB_SRAM_ECC_CALLBACK callback, uintptr_t context)
 ------------------------------------------------------------------------------
 Purpose: Initialize ECC to perform fault detection on SRAM.
 Input  : Callback function to be called once single fault is detected
@@ -96,10 +96,10 @@ Input  : Callback function to be called once single fault is detected
 Output : None.
 Notes  : None
 ============================================================================*/
-void CLASSB_SRAM_EccInit(CLASSB_RAM_ECC_CALLBACK callback, uintptr_t context)
+void CLASSB_SRAM_EccInit(CLASSB_SRAM_ECC_CALLBACK callback, uintptr_t context)
 {    /* Register callback function */
-    CLASSB_RAM_ECC_CallbackObject.callback = callback;
-    CLASSB_RAM_ECC_CallbackObject.context = context;
+    CLASSB_SRAM_ECC_CallbackObject.callback = callback;
+    CLASSB_SRAM_ECC_CallbackObject.context = context;
     
     // Enable ECC if disabled
     MCRAMC_REGS->MCRAMC_CTRLA |= MCRAMC_CTRLA_ENABLE_Msk;
@@ -109,15 +109,4 @@ void CLASSB_SRAM_EccInit(CLASSB_RAM_ECC_CALLBACK callback, uintptr_t context)
     
     // Enable Single and Double Fault interrupt
     MCRAMC_REGS->MCRAMC_INTENSET = MCRAMC_INTENSET_Msk;
-  
-    if (context == true)
-    {
-        _CLASSB_UpdateTestResult(CLASSB_TEST_TYPE_RST, CLASSB_TEST_RAM,
-            CLASSB_TEST_INPROGRESS);
-    }
-    else
-    {
-        _CLASSB_UpdateTestResult(CLASSB_TEST_TYPE_SST, CLASSB_TEST_RAM,
-            CLASSB_TEST_INPROGRESS);
-    }
 }
