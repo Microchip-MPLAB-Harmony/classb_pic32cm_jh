@@ -144,13 +144,9 @@ int main(void) {
 
     // Enable SERR and DERR interrupts for RAM
     CLASSB_SRAM_EccInit (runtimeClassBRamCallback, 0);
-    classb_test_status = CLASSB_TEST_INPROGRESS;
-    printf("\r\n Result of SRAM RST ECC Enable is %s\r\n", test_status_str[classb_test_status]);
 
     // Enable SERR and DERR interrupts for RAM
     CLASSB_FLASH_EccInit(runtimeClassBFlashCallback, 0);
-    classb_test_status = CLASSB_TEST_INPROGRESS;
-    printf("\r\n Result of Flash RST ECC Enable is %s\r\n", test_status_str[classb_test_status]);
     
     WDT_Clear();
     __disable_irq();

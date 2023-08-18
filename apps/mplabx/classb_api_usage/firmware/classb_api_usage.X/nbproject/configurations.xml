@@ -32,6 +32,9 @@
             <logicalFolder name="nvic" displayName="nvic" projectFiles="true">
               <itemPath>../src/config/classb_api_usage/peripheral/nvic/plib_nvic.h</itemPath>
             </logicalFolder>
+            <logicalFolder name="nvmctrl" displayName="nvmctrl" projectFiles="true">
+              <itemPath>../src/config/classb_api_usage/peripheral/nvmctrl/plib_nvmctrl.h</itemPath>
+            </logicalFolder>
             <logicalFolder name="port" displayName="port" projectFiles="true">
               <itemPath>../src/config/classb_api_usage/peripheral/port/plib_port.h</itemPath>
             </logicalFolder>
@@ -212,6 +215,9 @@
             <logicalFolder name="nvic" displayName="nvic" projectFiles="true">
               <itemPath>../src/config/classb_api_usage/peripheral/nvic/plib_nvic.c</itemPath>
             </logicalFolder>
+            <logicalFolder name="nvmctrl" displayName="nvmctrl" projectFiles="true">
+              <itemPath>../src/config/classb_api_usage/peripheral/nvmctrl/plib_nvmctrl.c</itemPath>
+            </logicalFolder>
             <logicalFolder name="port" displayName="port" projectFiles="true">
               <itemPath>../src/config/classb_api_usage/peripheral/port/plib_port.c</itemPath>
             </logicalFolder>
@@ -252,7 +258,7 @@
         <targetDevice>PIC32CM5164JH01100</targetDevice>
         <targetHeader></targetHeader>
         <targetPluginBoard></targetPluginBoard>
-        <platformTool>noID</platformTool>
+        <platformTool>EdbgTool</platformTool>
         <languageToolchain>XC32</languageToolchain>
         <languageToolchainVersion>4.30</languageToolchainVersion>
         <platform>3</platform>
