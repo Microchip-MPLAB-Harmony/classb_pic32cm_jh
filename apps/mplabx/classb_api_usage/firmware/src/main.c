@@ -60,7 +60,7 @@
 #define CPU_CLOCK_ERROR         5U
 #define CPU_CLOCK_TEST_CYCLES   164U
 
-static uint32_t data_read [NVMCTRL_PAGE_SIZE] = {0};
+static uint32_t data_read [NVMCTRL_PAGE_SIZE/4U] = {0};
 
 char test_status_str[4][25] = {"CLASSB_TEST_NOT_EXECUTED",
     "CLASSB_TEST_PASSED",
@@ -163,8 +163,9 @@ int main(void) {
         ram_read = *pRam;
         (void) ram_read;
     }
-
-    // Enable SERR and DERR interrupts for RAM
+    printf("\r\n No Errors found in SRAM address from 0x%08x to 0x%08x \r\n",
+            SRAM_START_ADDRESS, SRAM_START_ADDRESS + SRAM_TEST_SIZE - 1);
+    // Enable SERR and DERR interrupts for Flash
     CLASSB_FLASH_EccInit(runtimeClassBFlashCallback, 0);
     WDT_Clear();
     // Check Flash for errors
@@ -172,10 +173,12 @@ int main(void) {
     for (address=FLASH_START_ADDRESS; address<FLASH_TEST_SIZE; ){
         // Read physical value contained in Flash memory at defined address.
         // For single bit error this value is corrected on the fly as ECC feature is enabled.
-        *((uint64_t*) &data_read) = *(uint64_t*) address;
+        NVMCTRL_Read(&data_read[0], NVMCTRL_PAGE_SIZE, address);
         address = address + NVMCTRL_PAGE_SIZE;
     }
-
+    printf("\r\n No Errors found in Flash address from 0x%08x to 0x%08x \r\n",
+            FLASH_START_ADDRESS, FLASH_START_ADDRESS + FLASH_TEST_SIZE - 1);
+    
     WDT_Clear();
     __disable_irq();
     classb_test_status = CLASSB_ClockTest(CPU_CLOCK_FREQ, CPU_CLOCK_ERROR, CPU_CLOCK_TEST_CYCLES, true);
