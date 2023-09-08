@@ -56,8 +56,8 @@
 #include "peripheral/clock/plib_clock.h"
 #include "peripheral/nvic/plib_nvic.h"
 #include "peripheral/wdt/plib_wdt.h"
-#include "peripheral/sercom/usart/plib_sercom4_usart.h"
 #include "bsp/bsp.h"
+#include "peripheral/sercom/usart/plib_sercom4_usart.h"
 
 // DOM-IGNORE-BEGIN
 #ifdef __cplusplus  // Provide C++ Compatibility

@@ -50,10 +50,17 @@
 #include <stdlib.h>                     // Defines EXIT_FAILURE
 #include "definitions.h"                // SYS function prototypes
 
+#define SRAM_START_ADDRESS 0x20000000U
+#define SRAM_TEST_SIZE          0x3FFFU
+#define FLASH_START_ADDRESS      0x0U
+#define FLASH_TEST_SIZE          0x3FFFFU
+
 #define RX_BUFFER_SIZE          256U
 #define CPU_CLOCK_FREQ          48000000U
 #define CPU_CLOCK_ERROR         5U
 #define CPU_CLOCK_TEST_CYCLES   164U
+
+static uint32_t data_read [NVMCTRL_PAGE_SIZE] = {0};
 
 char test_status_str[4][25] = {"CLASSB_TEST_NOT_EXECUTED",
     "CLASSB_TEST_PASSED",
@@ -144,10 +151,29 @@ int main(void) {
 
     // Enable SERR and DERR interrupts for RAM
     CLASSB_SRAM_EccInit (runtimeClassBRamCallback, 0);
+    WDT_Clear();
+    // Check RAM  for errors
+    register uint32_t *pRam;
+    volatile uint32_t ram_read;
+    for (pRam = (uint32_t*)(SRAM_START_ADDRESS);
+        pRam < (uint32_t*)(SRAM_START_ADDRESS + SRAM_TEST_SIZE) ; pRam++)
+    {
+        ram_read = *pRam;
+        (void) ram_read;
+    }
 
     // Enable SERR and DERR interrupts for RAM
     CLASSB_FLASH_EccInit(runtimeClassBFlashCallback, 0);
-    
+    WDT_Clear();
+    // Check RAM  for errors
+    uint32_t address;
+    for (address=FLASH_START_ADDRESS; address<FLASH_TEST_SIZE; address++){
+        // Read physical value contained in Flash memory at defined address.
+        // This value is corrected on the fly as ECC feature is enabled.
+        *((uint64_t*) &data_read) = *(uint64_t*) address;
+        address = address + NVMCTRL_PAGE_SIZE;
+    }
+
     WDT_Clear();
     __disable_irq();
     classb_test_status = CLASSB_ClockTest(CPU_CLOCK_FREQ, CPU_CLOCK_ERROR, CPU_CLOCK_TEST_CYCLES, true);

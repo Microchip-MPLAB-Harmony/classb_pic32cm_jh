@@ -2966,7 +2966,7 @@
       </entry>
       <entry>
          <file>..\src\config\classb_api_usage\definitions.h</file>
-         <hash>e1bdcab38a7eb8c6bb7e8ff382744bc1e1666c79d6e7f326080b5efbd1f6fa12</hash>
+         <hash>2c907fc3d5e7da618d858d93a2e61d106e673d504eec8d17f9786e72494aaa97</hash>
       </entry>
       <entry>
          <file>..\src\packs\PIC32CM5164JH01100_DFP\instance\tc3.h</file>
@@ -3010,7 +3010,7 @@
       </entry>
       <entry>
          <file>..\src\config\classb_api_usage\initialization.c</file>
-         <hash>3aa278cbfbc7459ad1abaff299223bdf555a7117c9e9a195d9b5639e97f3bc5a</hash>
+         <hash>5b9ef1fa3a985b417ed147e31ab2ee971dec75059be0c8652e291d7784a077d3</hash>
       </entry>
       <entry>
          <file>..\src\packs\PIC32CM5164JH01100_DFP\instance\fuses.h</file>
