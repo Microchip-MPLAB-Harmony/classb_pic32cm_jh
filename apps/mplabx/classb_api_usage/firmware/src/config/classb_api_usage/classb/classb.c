@@ -74,7 +74,7 @@ volatile uint32_t * interrupt_count;
  *     Functions
  *----------------------------------------------------------------------------*/
 /*============================================================================
-void CLASSB_SRAM_Callback(uint32_t status, uintptr_t context)
+static void CLASSB_SRAM_Callback(uint32_t status, uintptr_t context)
 ------------------------------------------------------------------------------
 Purpose: Called if a single fault error detected by SRAM ECC.
 Input  : None.
@@ -82,7 +82,7 @@ Output : None
 Notes  : The application decides the contents of this function.
          This function must not return.
 ============================================================================*/
-void CLASSB_SRAM_Callback(uint32_t status, uintptr_t context) {
+static void CLASSB_SRAM_Callback(uint32_t status, uintptr_t context) {
 #if (defined(__DEBUG) || defined(__DEBUG_D)) && defined(__XC32)
     __builtin_software_breakpoint();
 #endif
@@ -94,7 +94,7 @@ void CLASSB_SRAM_Callback(uint32_t status, uintptr_t context) {
 }
 
 /*============================================================================
-void CLASSB_FLASH_Callback(uint32_t status, uintptr_t context)
+static void CLASSB_FLASH_Callback(uint32_t status, uintptr_t context)
 ------------------------------------------------------------------------------
 Purpose: Called if a single fault error detected by Flash ECC.
 Input  : None
@@ -102,7 +102,7 @@ Output : None
 Notes  : The application decides the contents of this function.
          This function must not return.
 ============================================================================*/
-void CLASSB_FLASH_Callback(uint32_t status, uintptr_t context) {
+static void CLASSB_FLASH_Callback(uint32_t status, uintptr_t context) {
 #if (defined(__DEBUG) || defined(__DEBUG_D)) && defined(__XC32)
     __builtin_software_breakpoint();
 #endif
@@ -190,7 +190,7 @@ Input  : None
 Output : None
 Notes  : The application decides the contents of this function.
 ============================================================================*/
-void CLASSB_SST_WDT_Recovery(void)
+static void CLASSB_SST_WDT_Recovery(void)
 {
 #if (defined(__DEBUG) || defined(__DEBUG_D)) && defined(__XC32)
     __builtin_software_breakpoint();
@@ -314,7 +314,11 @@ static CLASSB_INIT_STATUS CLASSB_Init(void)
             // Launch the MBIST Test on SRAM
             SMBIST_REGS->SMBIST_CTRL = (uint32_t)(SMBIST_CTRL_SMBISTP1_Msk | SMBIST_CTRL_SMBISTP2_Msk);
             // Wait for Test to Finish
-            while ((SMBIST_REGS->SMBIST_STATUS & SMBIST_STATUS_DONE_Msk) == 0);
+            while ((SMBIST_REGS->SMBIST_STATUS & SMBIST_STATUS_DONE_Msk) == 0)
+            {
+                // Wait till SMBIST Test is complete
+                ;
+            }
             
             // RAM Initialize
             register uint32_t *pRam;
@@ -359,11 +363,11 @@ Notes  : This function calls all the configured self-tests during startup.
 ============================================================================*/
 static CLASSB_STARTUP_STATUS CLASSB_Startup_Tests(void)
 {
-    CLASSB_STARTUP_STATUS cb_startup_status = CLASSB_STARTUP_TEST_NOT_EXECUTED;
-    CLASSB_STARTUP_STATUS cb_temp_startup_status = CLASSB_STARTUP_TEST_NOT_EXECUTED;
-    CLASSB_TEST_STATUS cb_test_status = CLASSB_TEST_NOT_EXECUTED;
+CLASSB_STARTUP_STATUS cb_startup_status = CLASSB_STARTUP_TEST_NOT_EXECUTED;
+CLASSB_STARTUP_STATUS cb_temp_startup_status = CLASSB_STARTUP_TEST_NOT_EXECUTED;
+CLASSB_TEST_STATUS cb_test_status = CLASSB_TEST_NOT_EXECUTED;
     
-    // Enable watchdog if it is not enabled via Fuses
+    //Enable watchdog if it is not enabled via Fuses
     if (((WDT_REGS->WDT_CTRLA & WDT_CTRLA_ENABLE_Msk) == 0) &&
         ((WDT_REGS->WDT_CTRLA & WDT_CTRLA_ALWAYSON_Msk) == 0))
     {
@@ -373,31 +377,39 @@ static CLASSB_STARTUP_STATUS CLASSB_Startup_Tests(void)
     
     // Update the flag before running any self-test
     *classb_test_in_progress = CLASSB_TEST_STARTED;
-    uint16_t clock_test_rtc_cycles = ((5 * CLASSB_CLOCK_TEST_RATIO_NS_MS) / CLASSB_CLOCK_TEST_RTC_RATIO_NS);
+    uint16_t clock_test_rtc_cycles = ((5U * CLASSB_CLOCK_TEST_RATIO_NS_MS) / CLASSB_CLOCK_TEST_RTC_RATIO_NS);
 
-        // Test processor core registers
-        cb_test_status = CLASSB_CPU_RegistersTest(false);
-        if (cb_test_status == CLASSB_TEST_PASSED)
-        {
-            cb_temp_startup_status = CLASSB_STARTUP_TEST_PASSED;
-        }
-        else if (cb_test_status == CLASSB_TEST_FAILED)
-        {
-            cb_temp_startup_status = CLASSB_STARTUP_TEST_FAILED;
-        }
-
-        // Program Counter test
-        *ongoing_sst_id = CLASSB_TEST_PC;
-        cb_test_status = CLASSB_CPU_PCTest(false);
-
-        if (cb_test_status == CLASSB_TEST_PASSED)
-        {
-            cb_temp_startup_status = CLASSB_STARTUP_TEST_PASSED;
-        }
-        else if (cb_test_status == CLASSB_TEST_FAILED)
-        {
-            cb_temp_startup_status = CLASSB_STARTUP_TEST_FAILED;
-        }
+   // Test processor core registers
+   cb_test_status = CLASSB_CPU_RegistersTest(false);
+   if ((cb_temp_startup_status != CLASSB_STARTUP_TEST_FAILED) && (cb_test_status == CLASSB_TEST_PASSED))
+   {
+       cb_temp_startup_status = CLASSB_STARTUP_TEST_PASSED;
+   }
+   else if (cb_test_status == CLASSB_TEST_FAILED)
+   {
+       cb_temp_startup_status = CLASSB_STARTUP_TEST_FAILED;
+   }
+   else
+   {
+       // No need to update cb_temp_startup_status
+       ;
+   }
+   // Program Counter test
+   *ongoing_sst_id = CLASSB_TEST_PC;
+   cb_test_status = CLASSB_CPU_PCTest(false);
+   if ((cb_temp_startup_status != CLASSB_STARTUP_TEST_FAILED) && (cb_test_status == CLASSB_TEST_PASSED))
+   {
+       cb_temp_startup_status = CLASSB_STARTUP_TEST_PASSED;
+   }
+   else if (cb_test_status == CLASSB_TEST_FAILED)
+   {
+       cb_temp_startup_status = CLASSB_STARTUP_TEST_FAILED;
+   }
+   else
+   {
+       // No need to update cb_temp_startup_status
+       ;
+   }
             
     // SRAM ECC Initialize
     CLASSB_SRAM_EccInit(CLASSB_SRAM_Callback, 0);
@@ -410,13 +422,18 @@ static CLASSB_STARTUP_STATUS CLASSB_Startup_Tests(void)
     // Clear WDT before test
     WDT_REGS->WDT_CLEAR = WDT_CLEAR_CLEAR_KEY;
     cb_test_status = CLASSB_ClockTest(CLASSB_CLOCK_DEFAULT_CLOCK_FREQ, CLASSB_CLOCK_ERROR_PERCENT, clock_test_rtc_cycles, false);
-    if (cb_test_status == CLASSB_TEST_PASSED)
+    if ((cb_temp_startup_status != CLASSB_STARTUP_TEST_FAILED) && (cb_test_status == CLASSB_TEST_PASSED))
     {
         cb_temp_startup_status = CLASSB_STARTUP_TEST_PASSED;
     }
     else if (cb_test_status == CLASSB_TEST_FAILED)
     {
         cb_temp_startup_status = CLASSB_STARTUP_TEST_FAILED;
+    }
+    else
+    {
+        // No need to update cb_temp_startup_status
+        ;
     }
 
     // Interrupt Test
@@ -424,13 +441,18 @@ static CLASSB_STARTUP_STATUS CLASSB_Startup_Tests(void)
     // Clear WDT before test
     WDT_REGS->WDT_CLEAR = WDT_CLEAR_CLEAR_KEY;
     cb_test_status = CLASSB_SST_InterruptTest();
-    if (cb_test_status == CLASSB_TEST_PASSED)
+    if ((cb_temp_startup_status != CLASSB_STARTUP_TEST_FAILED) && (cb_test_status == CLASSB_TEST_PASSED))
     {
         cb_temp_startup_status = CLASSB_STARTUP_TEST_PASSED;
     }
     else if (cb_test_status == CLASSB_TEST_FAILED)
     {
         cb_temp_startup_status = CLASSB_STARTUP_TEST_FAILED;
+    }
+    else
+    {
+        // No need to update cb_temp_startup_status
+        ;
     }
     
     if (cb_temp_startup_status == CLASSB_STARTUP_TEST_PASSED)
@@ -493,5 +515,10 @@ void __attribute__((used)) _on_reset(void)
     {
         // Clear flags
         *classb_test_in_progress = CLASSB_TEST_NOT_STARTED;
+    }
+    else
+    {
+        // init_status is neither CLASSB_SST_NOT_DONE nor CLASSB_SST_DONE, do nothing.
+        ;
     }
 }

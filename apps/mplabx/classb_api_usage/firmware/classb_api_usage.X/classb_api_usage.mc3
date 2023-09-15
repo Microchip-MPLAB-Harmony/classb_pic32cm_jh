@@ -292,14 +292,14 @@
     &lt;ComponentGraph dnOrder=&quot;1&quot; id=&quot;__ROOTVIEW&quot;&gt;
       &lt;ElementPositions dnOrder=&quot;0&quot;&gt;
         &lt;ElementPosition dnOrder=&quot;0&quot; id=&quot;BSP_PIC32CM_JH_Curiosity_Pro&quot; x=&quot;180&quot; y=&quot;20&quot;/&gt;
-        &lt;ElementPosition dnOrder=&quot;1&quot; id=&quot;cmsis&quot; x=&quot;30&quot; y=&quot;240&quot;/&gt;
+        &lt;ElementPosition dnOrder=&quot;1&quot; id=&quot;cmsis&quot; x=&quot;110&quot; y=&quot;200&quot;/&gt;
         &lt;ElementPosition dnOrder=&quot;2&quot; id=&quot;core&quot; x=&quot;30&quot; y=&quot;200&quot;/&gt;
         &lt;ElementPosition dnOrder=&quot;3&quot; id=&quot;dfp&quot; x=&quot;30&quot; y=&quot;160&quot;/&gt;
         &lt;ElementPosition dnOrder=&quot;4&quot; id=&quot;evsys&quot; x=&quot;30&quot; y=&quot;100&quot;/&gt;
-        &lt;ElementPosition dnOrder=&quot;5&quot; id=&quot;lib_classb_pic32cm_jh&quot; x=&quot;33&quot; y=&quot;285&quot;/&gt;
+        &lt;ElementPosition dnOrder=&quot;5&quot; id=&quot;lib_classb_pic32cm_jh&quot; x=&quot;224&quot; y=&quot;161&quot;/&gt;
         &lt;ElementPosition dnOrder=&quot;6&quot; id=&quot;nvmctrl&quot; x=&quot;20&quot; y=&quot;20&quot;/&gt;
         &lt;ElementPosition dnOrder=&quot;7&quot; id=&quot;sercom4&quot; x=&quot;177&quot; y=&quot;54&quot;/&gt;
-        &lt;ElementPosition dnOrder=&quot;8&quot; id=&quot;stdio&quot; x=&quot;350&quot; y=&quot;64&quot;/&gt;
+        &lt;ElementPosition dnOrder=&quot;8&quot; id=&quot;stdio&quot; x=&quot;342&quot; y=&quot;68&quot;/&gt;
       &lt;/ElementPositions&gt;
     &lt;/ComponentGraph&gt;
   &lt;/UserData&gt;
@@ -1476,6 +1476,58 @@
     &lt;Values dnOrder=&quot;0&quot;&gt;
       &lt;User dnOrder=&quot;0&quot; value=&quot;true&quot;/&gt;
     &lt;/Values&gt;
+  &lt;/lib_classb_pic32cm_jh&gt;
+&lt;/lib_classb_pic32cm_jh&gt;
+</value>
+      </entry>
+      <entry>
+         <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="lib_classb_pic32cm_jh" name="CLASSB_SYS_FLASH_INT_C_SYM"/>
+         <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;lib_classb_pic32cm_jh&gt;
+  &lt;lib_classb_pic32cm_jh dnOrder=&quot;0&quot; id=&quot;CLASSB_SYS_FLASH_INT_C_SYM&quot;&gt;
+    &lt;Attributes dnOrder=&quot;0&quot;&gt;
+      &lt;Boolean dnOrder=&quot;0&quot; id=&quot;enabled&quot;&gt;
+        &lt;Value dnOrder=&quot;0&quot;&gt;true&lt;/Value&gt;
+      &lt;/Boolean&gt;
+    &lt;/Attributes&gt;
+  &lt;/lib_classb_pic32cm_jh&gt;
+&lt;/lib_classb_pic32cm_jh&gt;
+</value>
+      </entry>
+      <entry>
+         <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="lib_classb_pic32cm_jh" name="CLASSB_SYS_FLASH_INT_H_SYM"/>
+         <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;lib_classb_pic32cm_jh&gt;
+  &lt;lib_classb_pic32cm_jh dnOrder=&quot;0&quot; id=&quot;CLASSB_SYS_FLASH_INT_H_SYM&quot;&gt;
+    &lt;Attributes dnOrder=&quot;0&quot;&gt;
+      &lt;Boolean dnOrder=&quot;0&quot; id=&quot;enabled&quot;&gt;
+        &lt;Value dnOrder=&quot;0&quot;&gt;true&lt;/Value&gt;
+      &lt;/Boolean&gt;
+    &lt;/Attributes&gt;
+  &lt;/lib_classb_pic32cm_jh&gt;
+&lt;/lib_classb_pic32cm_jh&gt;
+</value>
+      </entry>
+      <entry>
+         <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="lib_classb_pic32cm_jh" name="CLASSB_SYS_SRAM_INT_C_SYM"/>
+         <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;lib_classb_pic32cm_jh&gt;
+  &lt;lib_classb_pic32cm_jh dnOrder=&quot;0&quot; id=&quot;CLASSB_SYS_SRAM_INT_C_SYM&quot;&gt;
+    &lt;Attributes dnOrder=&quot;0&quot;&gt;
+      &lt;Boolean dnOrder=&quot;0&quot; id=&quot;enabled&quot;&gt;
+        &lt;Value dnOrder=&quot;0&quot;&gt;true&lt;/Value&gt;
+      &lt;/Boolean&gt;
+    &lt;/Attributes&gt;
+  &lt;/lib_classb_pic32cm_jh&gt;
+&lt;/lib_classb_pic32cm_jh&gt;
+</value>
+      </entry>
+      <entry>
+         <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="lib_classb_pic32cm_jh" name="CLASSB_SYS_SRAM_INT_H_SYM"/>
+         <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;lib_classb_pic32cm_jh&gt;
+  &lt;lib_classb_pic32cm_jh dnOrder=&quot;0&quot; id=&quot;CLASSB_SYS_SRAM_INT_H_SYM&quot;&gt;
+    &lt;Attributes dnOrder=&quot;0&quot;&gt;
+      &lt;Boolean dnOrder=&quot;0&quot; id=&quot;enabled&quot;&gt;
+        &lt;Value dnOrder=&quot;0&quot;&gt;true&lt;/Value&gt;
+      &lt;/Boolean&gt;
+    &lt;/Attributes&gt;
   &lt;/lib_classb_pic32cm_jh&gt;
 &lt;/lib_classb_pic32cm_jh&gt;
 </value>
@@ -2966,7 +3018,7 @@
       </entry>
       <entry>
          <file>..\src\config\classb_api_usage\definitions.h</file>
-         <hash>2c907fc3d5e7da618d858d93a2e61d106e673d504eec8d17f9786e72494aaa97</hash>
+         <hash>6c372d19edf9e52b686a1ac78d3b046d9780c04d3f60d4b3e4ff5eb7de0b8f37</hash>
       </entry>
       <entry>
          <file>..\src\packs\PIC32CM5164JH01100_DFP\instance\tc3.h</file>
@@ -3010,7 +3062,7 @@
       </entry>
       <entry>
          <file>..\src\config\classb_api_usage\initialization.c</file>
-         <hash>5b9ef1fa3a985b417ed147e31ab2ee971dec75059be0c8652e291d7784a077d3</hash>
+         <hash>3aa278cbfbc7459ad1abaff299223bdf555a7117c9e9a195d9b5639e97f3bc5a</hash>
       </entry>
       <entry>
          <file>..\src\packs\PIC32CM5164JH01100_DFP\instance\fuses.h</file>
@@ -3146,7 +3198,7 @@
       </entry>
       <entry>
          <file>..\src\config\classb_api_usage\classb\classb.c</file>
-         <hash>eef6aff3a30d7e6f660ab4a61926d5fbfd4d5e395095bfe4895ce05efa7a8404</hash>
+         <hash>724132e1ca3ac6b2e3dc805f2341e81cec2fd2ea513f5cef5a79e33666eb0b7f</hash>
       </entry>
       <entry>
          <file>..\src\packs\PIC32CM5164JH01100_DFP\component\evsys.h</file>
@@ -3342,7 +3394,7 @@
       </entry>
       <entry>
          <file>..\src\config\classb_api_usage\classb\classb_cpu_pc_test.c</file>
-         <hash>246ee214e86397068b6ba2a62c95b0c0f95ddd00fb2c2007ecb16a1e6c54066e</hash>
+         <hash>259ec504ed54a5040240aa0e9a43fb890c3c4bd9a8ac65c92f26c37746a8faf2</hash>
       </entry>
       <entry>
          <file>..\src\packs\PIC32CM5164JH01100_DFP\instance\sercom5.h</file>
@@ -3386,7 +3438,7 @@
       </entry>
       <entry>
          <file>..\src\config\classb_api_usage\classb\classb_interrupt_test.c</file>
-         <hash>58d7d1a2b0e07d92412f5cc7020df002518bec26ee44d74e2d2484711b0d8246</hash>
+         <hash>2943cbd0f0bd4474a0be55adba5b414815b376bbe90dd50dd84f9bf137ce834f</hash>
       </entry>
       <entry>
          <file>..\src\config\classb_api_usage\peripheral\clock\plib_clock.c</file>

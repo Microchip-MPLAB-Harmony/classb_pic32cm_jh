@@ -130,7 +130,7 @@ static void _CLASSB_BuildVectorTable(void)
     for(i = 0; i < CLASSB_INTR_VECTOR_TABLE_SIZE; i++)
     {
         // Get the interrupt handler address from the original vector table.
-        classb_ram_vector_table[i] = *(uint32_t *)(vector_start + (i * 4));
+        classb_ram_vector_table[i] = *(uint32_t *)(vector_start + (i * 4U));
     }
     // Modify the tested interrupt handler address
     classb_ram_vector_table[CLASSB_INTR_DEVICE_VECT_OFFSET + RTC_IRQn] = (uint32_t )&_CLASSB_RTC_Handler;

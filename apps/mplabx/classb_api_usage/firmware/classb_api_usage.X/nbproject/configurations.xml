@@ -12,15 +12,15 @@
             <itemPath>../src/config/classb_api_usage/bsp/bsp.h</itemPath>
           </logicalFolder>
           <logicalFolder name="classb" displayName="classb" projectFiles="true">
-            <itemPath>../src/config/classb_api_usage/classb/classb_common.h</itemPath>
             <itemPath>../src/config/classb_api_usage/classb/classb_clock_test.h</itemPath>
             <itemPath>../src/config/classb_api_usage/classb/classb_flash_test.h</itemPath>
-            <itemPath>../src/config/classb_api_usage/classb/classb.h</itemPath>
             <itemPath>../src/config/classb_api_usage/classb/classb_io_pin_test.h</itemPath>
             <itemPath>../src/config/classb_api_usage/classb/classb_interrupt_test.h</itemPath>
             <itemPath>../src/config/classb_api_usage/classb/classb_result_management.h</itemPath>
             <itemPath>../src/config/classb_api_usage/classb/classb_sram_test.h</itemPath>
             <itemPath>../src/config/classb_api_usage/classb/classb_cpu_reg_test.h</itemPath>
+            <itemPath>../src/config/classb_api_usage/classb/classb.h</itemPath>
+            <itemPath>../src/config/classb_api_usage/classb/classb_common.h</itemPath>
           </logicalFolder>
           <logicalFolder name="peripheral" displayName="peripheral" projectFiles="true">
             <logicalFolder name="clock" displayName="clock" projectFiles="true">
@@ -197,13 +197,13 @@
           <logicalFolder name="classb" displayName="classb" projectFiles="true">
             <itemPath>../src/config/classb_api_usage/classb/classb_clock_test.c</itemPath>
             <itemPath>../src/config/classb_api_usage/classb/classb_flash_test.c</itemPath>
-            <itemPath>../src/config/classb_api_usage/classb/classb_cpu_pc_test.c</itemPath>
             <itemPath>../src/config/classb_api_usage/classb/classb_io_pin_test.c</itemPath>
             <itemPath>../src/config/classb_api_usage/classb/classb_interrupt_test.c</itemPath>
             <itemPath>../src/config/classb_api_usage/classb/classb.c</itemPath>
             <itemPath>../src/config/classb_api_usage/classb/classb_cpu_reg_test.S</itemPath>
             <itemPath>../src/config/classb_api_usage/classb/classb_result_management.S</itemPath>
             <itemPath>../src/config/classb_api_usage/classb/classb_sram_test.c</itemPath>
+            <itemPath>../src/config/classb_api_usage/classb/classb_cpu_pc_test.c</itemPath>
           </logicalFolder>
           <logicalFolder name="peripheral" displayName="peripheral" projectFiles="true">
             <logicalFolder name="clock" displayName="clock" projectFiles="true">

@@ -4,6 +4,9 @@
 *.d
 *.flag
 *.backup
+*.ctu-info
+*cppcheck-addon-ctu-file-list
+*harmony-manifest-success.yml
 **/nbproject/private
 **/nbproject/Makefile-*
 **/nbproject/Package-*
@@ -11,6 +14,7 @@
 **/*.X/debug
 **/*.X/dist
 **/*.X/build
+**/*.X/report
 **/*.X/.generated_files
 **/*.IAR/Debug
 **/*.IAR/settings
