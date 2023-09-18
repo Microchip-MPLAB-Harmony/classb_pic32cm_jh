@@ -163,8 +163,10 @@ int main(void) {
         ram_read = *pRam;
         (void) ram_read;
     }
-
-    // Enable SERR and DERR interrupts for RAM
+    printf("\r\n No Errors found in SRAM address from 0x%08x to 0x%08x \r\n",
+            SRAM_START_ADDRESS, SRAM_START_ADDRESS + SRAM_TEST_SIZE - 1);
+    
+    // Enable SERR and DERR interrupts for Flash
     CLASSB_FLASH_EccInit(runtimeClassBFlashCallback, 0);
     WDT_Clear();
     // Check Flash for errors
@@ -175,6 +177,8 @@ int main(void) {
         NVMCTRL_Read(&data_read[0], NVMCTRL_PAGE_SIZE, address);
         address = address + NVMCTRL_PAGE_SIZE;
     }
+    printf("\r\n No Errors found in Flash address from 0x%08x to 0x%08x \r\n",
+            FLASH_START_ADDRESS, FLASH_START_ADDRESS + FLASH_TEST_SIZE - 1);
 
     WDT_Clear();
     __disable_irq();

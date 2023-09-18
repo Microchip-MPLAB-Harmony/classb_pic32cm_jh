@@ -3158,7 +3158,7 @@
       </entry>
       <entry>
          <file>..\src\config\classb_api_usage\classb\classb_common.h</file>
-         <hash>1f84cf77df0879cb532557b11074dc1d4d2f46c83c4c8f0755885b3bf19c14c8</hash>
+         <hash>5bcca6b7de303e14189aec5f446536ad4a664e75322e3bed8e60596213a9078a</hash>
       </entry>
       <entry>
          <file>..\src\packs\PIC32CM5164JH01100_DFP\instance\can0.h</file>
@@ -3198,7 +3198,7 @@
       </entry>
       <entry>
          <file>..\src\config\classb_api_usage\classb\classb.c</file>
-         <hash>724132e1ca3ac6b2e3dc805f2341e81cec2fd2ea513f5cef5a79e33666eb0b7f</hash>
+         <hash>78810b4a642805fa3aa78917c33320c4c5e1156345483a9b99936ceda238538a</hash>
       </entry>
       <entry>
          <file>..\src\packs\PIC32CM5164JH01100_DFP\component\evsys.h</file>
@@ -3394,7 +3394,7 @@
       </entry>
       <entry>
          <file>..\src\config\classb_api_usage\classb\classb_cpu_pc_test.c</file>
-         <hash>259ec504ed54a5040240aa0e9a43fb890c3c4bd9a8ac65c92f26c37746a8faf2</hash>
+         <hash>2d73e93791b653246616048eaec6c20956a996bb86c57dbe6d90ad2f59814bd0</hash>
       </entry>
       <entry>
          <file>..\src\packs\PIC32CM5164JH01100_DFP\instance\sercom5.h</file>

@@ -363,9 +363,9 @@ Notes  : This function calls all the configured self-tests during startup.
 ============================================================================*/
 static CLASSB_STARTUP_STATUS CLASSB_Startup_Tests(void)
 {
-CLASSB_STARTUP_STATUS cb_startup_status = CLASSB_STARTUP_TEST_NOT_EXECUTED;
-CLASSB_STARTUP_STATUS cb_temp_startup_status = CLASSB_STARTUP_TEST_NOT_EXECUTED;
-CLASSB_TEST_STATUS cb_test_status = CLASSB_TEST_NOT_EXECUTED;
+    CLASSB_STARTUP_STATUS cb_startup_status = CLASSB_STARTUP_TEST_NOT_EXECUTED;
+    CLASSB_STARTUP_STATUS cb_temp_startup_status = CLASSB_STARTUP_TEST_NOT_EXECUTED;
+    CLASSB_TEST_STATUS cb_test_status = CLASSB_TEST_NOT_EXECUTED;
     
     //Enable watchdog if it is not enabled via Fuses
     if (((WDT_REGS->WDT_CTRLA & WDT_CTRLA_ENABLE_Msk) == 0) &&
@@ -379,37 +379,37 @@ CLASSB_TEST_STATUS cb_test_status = CLASSB_TEST_NOT_EXECUTED;
     *classb_test_in_progress = CLASSB_TEST_STARTED;
     uint16_t clock_test_rtc_cycles = ((5U * CLASSB_CLOCK_TEST_RATIO_NS_MS) / CLASSB_CLOCK_TEST_RTC_RATIO_NS);
 
-   // Test processor core registers
-   cb_test_status = CLASSB_CPU_RegistersTest(false);
-   if ((cb_temp_startup_status != CLASSB_STARTUP_TEST_FAILED) && (cb_test_status == CLASSB_TEST_PASSED))
-   {
-       cb_temp_startup_status = CLASSB_STARTUP_TEST_PASSED;
-   }
-   else if (cb_test_status == CLASSB_TEST_FAILED)
-   {
-       cb_temp_startup_status = CLASSB_STARTUP_TEST_FAILED;
-   }
-   else
-   {
-       // No need to update cb_temp_startup_status
-       ;
-   }
-   // Program Counter test
-   *ongoing_sst_id = CLASSB_TEST_PC;
-   cb_test_status = CLASSB_CPU_PCTest(false);
-   if ((cb_temp_startup_status != CLASSB_STARTUP_TEST_FAILED) && (cb_test_status == CLASSB_TEST_PASSED))
-   {
-       cb_temp_startup_status = CLASSB_STARTUP_TEST_PASSED;
-   }
-   else if (cb_test_status == CLASSB_TEST_FAILED)
-   {
-       cb_temp_startup_status = CLASSB_STARTUP_TEST_FAILED;
-   }
-   else
-   {
-       // No need to update cb_temp_startup_status
-       ;
-   }
+    // Test processor core registers
+    cb_test_status = CLASSB_CPU_RegistersTest(false);
+    if ((cb_temp_startup_status != CLASSB_STARTUP_TEST_FAILED) && (cb_test_status == CLASSB_TEST_PASSED))
+    {
+        cb_temp_startup_status = CLASSB_STARTUP_TEST_PASSED;
+    }
+    else if (cb_test_status == CLASSB_TEST_FAILED)
+    {
+        cb_temp_startup_status = CLASSB_STARTUP_TEST_FAILED;
+    }
+    else
+    {
+        // No need to update cb_temp_startup_status
+        ;
+    }
+    // Program Counter test
+    *ongoing_sst_id = CLASSB_TEST_PC;
+    cb_test_status = CLASSB_CPU_PCTest(false);
+    if ((cb_temp_startup_status != CLASSB_STARTUP_TEST_FAILED) && (cb_test_status == CLASSB_TEST_PASSED))
+    {
+        cb_temp_startup_status = CLASSB_STARTUP_TEST_PASSED;
+    }
+    else if (cb_test_status == CLASSB_TEST_FAILED)
+    {
+        cb_temp_startup_status = CLASSB_STARTUP_TEST_FAILED;
+    }
+    else
+    {
+        // No need to update cb_temp_startup_status
+        ;
+    }
             
     // SRAM ECC Initialize
     CLASSB_SRAM_EccInit(CLASSB_SRAM_Callback, 0);
@@ -518,7 +518,7 @@ void __attribute__((used)) _on_reset(void)
     }
     else
     {
-        // init_status is neither CLASSB_SST_NOT_DONE nor CLASSB_SST_DONE, do nothing.
+        // The init_status is neither CLASSB_SST_NOT_DONE nor CLASSB_SST_DONE, do nothing.
         ;
     }
 }

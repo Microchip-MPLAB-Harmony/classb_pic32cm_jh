@@ -100,8 +100,8 @@ Notes  : This function is called from 'CLASSB_CPU_PCTest' to check the Program
 ============================================================================*/
 static CLASSB_CPU_PC_TEST_VALUES _CLASSB_CPU_PCTestRoutineA(CLASSB_CPU_PC_TEST_VALUES pc_test_data)
 {
-    //return (CLASSB_CPU_PC_TEST_VALUES) (pc_test_data << 1);
     register uint32_t pc_test_data_ls = (uint32_t)pc_test_data << 1U;
+
     return (CLASSB_CPU_PC_TEST_VALUES) pc_test_data_ls;
 }
 
@@ -116,8 +116,8 @@ Notes  : This function is called from 'CLASSB_CPU_PCTest' to check the Program
 ============================================================================*/
 static CLASSB_CPU_PC_TEST_VALUES _CLASSB_CPU_PCTestRoutineB(CLASSB_CPU_PC_TEST_VALUES pc_test_data)
 {
-    //return (CLASSB_CPU_PC_TEST_VALUES) (pc_test_data << 1);
     register uint32_t pc_test_data_ls = (uint32_t)pc_test_data << 1U;
+
     return (CLASSB_CPU_PC_TEST_VALUES) pc_test_data_ls;
 }
 
@@ -132,8 +132,8 @@ Notes  : This function is called from 'CLASSB_CPU_PCTest' to check the Program
 ============================================================================*/
 static CLASSB_CPU_PC_TEST_VALUES _CLASSB_CPU_PCTestRoutineC(CLASSB_CPU_PC_TEST_VALUES pc_test_data)
 {
-    //return (CLASSB_CPU_PC_TEST_VALUES) (pc_test_data << 1);
     register uint32_t pc_test_data_ls = (uint32_t)pc_test_data << 1U;
+
     return (CLASSB_CPU_PC_TEST_VALUES) pc_test_data_ls;
 }
 
