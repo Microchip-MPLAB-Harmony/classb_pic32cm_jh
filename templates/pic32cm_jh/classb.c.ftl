@@ -397,10 +397,10 @@ static CLASSB_STARTUP_STATUS CLASSB_Startup_Tests(void)
         WDT_REGS->WDT_CONFIG = WDT_CONFIG_PER_CYC2048;
         WDT_REGS->WDT_CTRLA |= WDT_CTRLA_ENABLE_Msk;
     }
-    
+
+    </#if>
     // Update the flag before running any self-test
     *classb_test_in_progress = CLASSB_TEST_STARTED;
-    </#if>
     <#if CLASSB_CLOCK_TEST_OPT??>
         <#if CLASSB_CLOCK_TEST_OPT == true>
             <#if CLASSB_CLOCK_TEST_DURATION?has_content>
@@ -408,8 +408,8 @@ static CLASSB_STARTUP_STATUS CLASSB_Startup_Tests(void)
             </#if>
         </#if>
     </#if>
-
     <#if CLASSB_CPU_TEST_OPT?? && CLASSB_CPU_TEST_OPT == true>
+
         <#lt>    // Test processor core registers
         <#lt>    cb_test_status = CLASSB_CPU_RegistersTest(false);
         <#lt>    if ((cb_temp_startup_status != CLASSB_STARTUP_TEST_FAILED) && (cb_test_status == CLASSB_TEST_PASSED))
@@ -518,6 +518,7 @@ static CLASSB_STARTUP_STATUS CLASSB_Startup_Tests(void)
     <#lt>        cb_startup_status = CLASSB_STARTUP_TEST_FAILED;
     <#lt>    }
     </#if>
+
     return cb_startup_status;
 }
 

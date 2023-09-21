@@ -296,7 +296,7 @@
         &lt;ElementPosition dnOrder=&quot;2&quot; id=&quot;core&quot; x=&quot;30&quot; y=&quot;200&quot;/&gt;
         &lt;ElementPosition dnOrder=&quot;3&quot; id=&quot;dfp&quot; x=&quot;30&quot; y=&quot;160&quot;/&gt;
         &lt;ElementPosition dnOrder=&quot;4&quot; id=&quot;evsys&quot; x=&quot;30&quot; y=&quot;100&quot;/&gt;
-        &lt;ElementPosition dnOrder=&quot;5&quot; id=&quot;lib_classb_pic32cm_jh&quot; x=&quot;224&quot; y=&quot;161&quot;/&gt;
+        &lt;ElementPosition dnOrder=&quot;5&quot; id=&quot;lib_classb_pic32cm_jh&quot; x=&quot;224&quot; y=&quot;162&quot;/&gt;
         &lt;ElementPosition dnOrder=&quot;6&quot; id=&quot;nvmctrl&quot; x=&quot;20&quot; y=&quot;20&quot;/&gt;
         &lt;ElementPosition dnOrder=&quot;7&quot; id=&quot;sercom4&quot; x=&quot;177&quot; y=&quot;54&quot;/&gt;
         &lt;ElementPosition dnOrder=&quot;8&quot; id=&quot;stdio&quot; x=&quot;342&quot; y=&quot;68&quot;/&gt;
@@ -3018,7 +3018,7 @@
       </entry>
       <entry>
          <file>..\src\config\classb_api_usage\definitions.h</file>
-         <hash>6c372d19edf9e52b686a1ac78d3b046d9780c04d3f60d4b3e4ff5eb7de0b8f37</hash>
+         <hash>e1bdcab38a7eb8c6bb7e8ff382744bc1e1666c79d6e7f326080b5efbd1f6fa12</hash>
       </entry>
       <entry>
          <file>..\src\packs\PIC32CM5164JH01100_DFP\instance\tc3.h</file>
@@ -3198,7 +3198,7 @@
       </entry>
       <entry>
          <file>..\src\config\classb_api_usage\classb\classb.c</file>
-         <hash>78810b4a642805fa3aa78917c33320c4c5e1156345483a9b99936ceda238538a</hash>
+         <hash>6f058b6d48733a39afa671ca1610df5235793cf30d1aae54bce6c1573bd96a3a</hash>
       </entry>
       <entry>
          <file>..\src\packs\PIC32CM5164JH01100_DFP\component\evsys.h</file>

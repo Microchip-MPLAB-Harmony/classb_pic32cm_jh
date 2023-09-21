@@ -374,7 +374,7 @@ static CLASSB_STARTUP_STATUS CLASSB_Startup_Tests(void)
         WDT_REGS->WDT_CONFIG = WDT_CONFIG_PER_CYC2048;
         WDT_REGS->WDT_CTRLA |= WDT_CTRLA_ENABLE_Msk;
     }
-    
+
     // Update the flag before running any self-test
     *classb_test_in_progress = CLASSB_TEST_STARTED;
     uint16_t clock_test_rtc_cycles = ((5U * CLASSB_CLOCK_TEST_RATIO_NS_MS) / CLASSB_CLOCK_TEST_RTC_RATIO_NS);
@@ -463,6 +463,7 @@ static CLASSB_STARTUP_STATUS CLASSB_Startup_Tests(void)
     {
         cb_startup_status = CLASSB_STARTUP_TEST_FAILED;
     }
+
     return cb_startup_status;
 }
 
