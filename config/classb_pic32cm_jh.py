@@ -24,13 +24,29 @@
 ################################################################################
 #### Call-backs ####
 ################################################################################
-#Update Symbol Visibility
+# Update Symbol Visibility
 def setClassB_SymbolVisibility(MySymbol, event):
     MySymbol.setVisible(event["value"])
 
-#Update Symbol State
-def setClassB_SymbolState(MySymbol, event):
-    MySymbol.setEnabled(event["value"])
+# Set or clear Core Symbol Value
+def updateCore_SymbolValue(symbolId, value, isSet):
+    if isSet == True:
+        Database.setSymbolValue("core", symbolId, value)
+    else:
+        Database.clearSymbolValue("core", symbolId)
+
+# Update SRAM, Flash ECC Interrupt State
+def setClassB_UpdateInterrupt(SelectedSymbol, event):
+    interruptName = ""
+    selectedSymbolId = SelectedSymbol.getID()
+    if selectedSymbolId == "CLASSB_SYS_SRAM_INT_SYM":
+        interruptName = "MCRAMC"
+    elif selectedSymbolId == "CLASSB_SYS_FLASH_INT_SYM":
+        interruptName = "NVMCTRL"
+
+    if interruptName != "":
+        updateCore_SymbolValue(interruptName + "_INTERRUPT_ENABLE", event["value"], event["value"])
+        updateCore_SymbolValue(interruptName + "_INTERRUPT_HANDLER", SelectedSymbol.getValue(), event["value"])
 
 ################################################################################
 #### Component ####
@@ -48,29 +64,29 @@ def instantiateComponent(classBComponent):
 
     execfile(Module.getPath() +"/config/interface.py")
     
-    #Device params
+    # Device params
     classBFlashNode = ATDF.getNode("/avr-tools-device-file/devices/device/address-spaces/address-space/memory-segment@[name=\"FLASH\"]")
     if classBFlashNode != None:
-        #Flash size
+        # Flash size
         classB_FLASH_SIZE = classBComponent.createIntegerSymbol("CLASSB_FLASH_SIZE", None)
         classB_FLASH_SIZE.setVisible(False)
         classB_FLASH_SIZE.setDefaultValue(int(classBFlashNode.getAttribute("size"), 16))
         
     classBSRAMNode = ATDF.getNode("/avr-tools-device-file/devices/device/address-spaces/address-space/memory-segment@[name=\"DRAM\"]")
     if classBSRAMNode != None:
-        #SRAM size
+        # SRAM size
         classB_SRAM_SIZE = classBComponent.createIntegerSymbol("CLASSB_SRAM_SIZE", None)
         classB_SRAM_SIZE.setVisible(False)
         classB_SRAM_SIZE.setDefaultValue(int(classBSRAMNode.getAttribute("size"), 16))
-        #SRAM address
+        # SRAM address
         classB_SRAM_ADDR = classBComponent.createHexSymbol("CLASSB_SRAM_START_ADDRESS", None)
         classB_SRAM_ADDR.setVisible(False)
         classB_SRAM_ADDR.setDefaultValue(int(classBSRAMNode.getAttribute("start"), 16))
-        #SRAM address MSB 24 bits
+        # SRAM address MSB 24 bits
         classB_SRAM_START_MSB = classBComponent.createHexSymbol("CLASSB_SRAM_START_MSB", None)
         classB_SRAM_START_MSB.setVisible(False)
         classB_SRAM_START_MSB.setDefaultValue(int(classBSRAMNode.getAttribute("start"), 16) >> 8)
-        #SRAM reserve size is 64 bytes
+        # SRAM reserve size is 64 bytes
         classB_SRAM_RESERVE_SIZE = classBComponent.createIntegerSymbol("CLASSB_SRAM_RESERVE_SIZE", None)
         classB_SRAM_RESERVE_SIZE.setVisible(False)
         classB_SRAM_RESERVE_SIZE.setDefaultValue(int("64", 10))
@@ -191,13 +207,12 @@ def instantiateComponent(classBComponent):
     classb_MaxAccuracy.setMin(5)
     classb_MaxAccuracy.setMax(5)
     classb_MaxAccuracy.setDescription("Error percentage selected for CPU clock frequency test must be " + str(classb_MaxAccuracy.getValue()) + "% or higher")
-    
-        
+
 ############################################################################
 #### Code Generation ####
 ############################################################################
 
-    #Symbol for result management source file
+    # Symbol for result management source file
     classBSourceResultMgmt = classBComponent.createFileSymbol("CLASSB_SOURCE_RESULT_MGMT", None)
     classBSourceResultMgmt.setSourcePath("/templates/pic32cm_jh/classb_result_management_xc32.S.ftl")
     classBSourceResultMgmt.setOutputName("classb_result_management.S")
@@ -375,33 +390,17 @@ def instantiateComponent(classBComponent):
     classBSystemStartupFile.setType("SOURCE")
     classBSystemStartupFile.setMarkup(True)
 
-    # System SRAM ECC Interrupt Modification to interrupt.c file
-    classBSystemSRAMInterruptCSymbol = classBComponent.createListEntrySymbol("CLASSB_SYS_SRAM_INT_C_SYM", None)
-    classBSystemSRAMInterruptCSymbol.setVisible(False)
-    classBSystemSRAMInterruptCSymbol.addValue("    .pfnMCRAMC_Handler             = CLASSB_SRAM_ECC_InterruptHandler,")
-    classBSystemSRAMInterruptCSymbol.setTarget("core.LIST_SYSTEM_INTERRUPT_HANDLERS")
-    classBSystemSRAMInterruptCSymbol.setDependencies(setClassB_SymbolState, ["CLASSB_SRAM_ECC_OPT"])
+    # System SRAM ECC Interrupt Modification to interrupt files
+    classBSystemSRAMInterruptSymbol = classBComponent.createStringSymbol("CLASSB_SYS_SRAM_INT_SYM", None)
+    classBSystemSRAMInterruptSymbol.setVisible(False)
+    classBSystemSRAMInterruptSymbol.setValue("CLASSB_SRAM_ECC_InterruptHandler")
+    classBSystemSRAMInterruptSymbol.setDependencies(setClassB_UpdateInterrupt, ["CLASSB_SRAM_ECC_OPT"])
 
-    # System SRAM ECC Interrupt Modification to interrupt.h file
-    classBSystemSRAMInterruptHSymbol = classBComponent.createListEntrySymbol("CLASSB_SYS_SRAM_INT_H_SYM", None)
-    classBSystemSRAMInterruptHSymbol.setVisible(False)
-    classBSystemSRAMInterruptHSymbol.addValue("void CLASSB_SRAM_ECC_InterruptHandler (void);")
-    classBSystemSRAMInterruptHSymbol.setTarget("core.LIST_SYSTEM_INTERRUPT_HANDLER_DECLS")
-    classBSystemSRAMInterruptHSymbol.setDependencies(setClassB_SymbolState, ["CLASSB_SRAM_ECC_OPT"])
-
-    # System Flash ECC Interrupt Modification to interrupt.c file
-    classBSystemFlashInterruptCSymbol = classBComponent.createListEntrySymbol("CLASSB_SYS_FLASH_INT_C_SYM", None)
-    classBSystemFlashInterruptCSymbol.setVisible(False)
-    classBSystemFlashInterruptCSymbol.addValue("    .pfnNVMCTRL_Handler            = CLASSB_FLASH_ECC_InterruptHandler,")
-    classBSystemFlashInterruptCSymbol.setTarget("core.LIST_SYSTEM_INTERRUPT_HANDLERS")
-    classBSystemFlashInterruptCSymbol.setDependencies(setClassB_SymbolState, ["CLASSB_FLASH_ECC_OPT"])
-
-    # System Flash ECC Interrupt Modification to interrupt.h file
-    classBSystemFlashInterruptHSymbol = classBComponent.createListEntrySymbol("CLASSB_SYS_FLASH_INT_H_SYM", None)
-    classBSystemFlashInterruptHSymbol.setVisible(False)
-    classBSystemFlashInterruptHSymbol.addValue("void CLASSB_FLASH_ECC_InterruptHandler (void);")
-    classBSystemFlashInterruptHSymbol.setTarget("core.LIST_SYSTEM_INTERRUPT_HANDLER_DECLS")
-    classBSystemFlashInterruptHSymbol.setDependencies(setClassB_SymbolState, ["CLASSB_FLASH_ECC_OPT"])
+    # System Flash ECC Interrupt Modification to interrupt files
+    classBSystemFlashInterruptSymbol = classBComponent.createStringSymbol("CLASSB_SYS_FLASH_INT_SYM", None)
+    classBSystemFlashInterruptSymbol.setVisible(False)
+    classBSystemFlashInterruptSymbol.setValue("CLASSB_FLASH_ECC_InterruptHandler")
+    classBSystemFlashInterruptSymbol.setDependencies(setClassB_UpdateInterrupt, ["CLASSB_FLASH_ECC_OPT"])
     
     # Linker option to reserve classB reserve size of SRAM
     classB_xc32ld_reserve_sram = classBComponent.createSettingSymbol("CLASSB_XC32LD_RESERVE_SRAM", None)

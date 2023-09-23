@@ -288,7 +288,7 @@
          <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="core" name="!@#harmonyUserData"/>
          <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;UserData&gt;
   &lt;UserData dnOrder=&quot;0&quot;&gt;
-    &lt;GraphSettings canvasHeight=&quot;355&quot; canvasWidth=&quot;432&quot; dnOrder=&quot;0&quot;/&gt;
+    &lt;GraphSettings canvasHeight=&quot;270&quot; canvasWidth=&quot;636&quot; dnOrder=&quot;0&quot;/&gt;
     &lt;ComponentGraph dnOrder=&quot;1&quot; id=&quot;__ROOTVIEW&quot;&gt;
       &lt;ElementPositions dnOrder=&quot;0&quot;&gt;
         &lt;ElementPosition dnOrder=&quot;0&quot; id=&quot;BSP_PIC32CM_JH_Curiosity_Pro&quot; x=&quot;180&quot; y=&quot;20&quot;/&gt;
@@ -296,7 +296,7 @@
         &lt;ElementPosition dnOrder=&quot;2&quot; id=&quot;core&quot; x=&quot;30&quot; y=&quot;200&quot;/&gt;
         &lt;ElementPosition dnOrder=&quot;3&quot; id=&quot;dfp&quot; x=&quot;30&quot; y=&quot;160&quot;/&gt;
         &lt;ElementPosition dnOrder=&quot;4&quot; id=&quot;evsys&quot; x=&quot;30&quot; y=&quot;100&quot;/&gt;
-        &lt;ElementPosition dnOrder=&quot;5&quot; id=&quot;lib_classb_pic32cm_jh&quot; x=&quot;224&quot; y=&quot;162&quot;/&gt;
+        &lt;ElementPosition dnOrder=&quot;5&quot; id=&quot;lib_classb_pic32cm_jh&quot; x=&quot;221&quot; y=&quot;160&quot;/&gt;
         &lt;ElementPosition dnOrder=&quot;6&quot; id=&quot;nvmctrl&quot; x=&quot;20&quot; y=&quot;20&quot;/&gt;
         &lt;ElementPosition dnOrder=&quot;7&quot; id=&quot;sercom4&quot; x=&quot;177&quot; y=&quot;54&quot;/&gt;
         &lt;ElementPosition dnOrder=&quot;8&quot; id=&quot;stdio&quot; x=&quot;342&quot; y=&quot;68&quot;/&gt;
@@ -594,7 +594,7 @@
          <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;core&gt;
   &lt;core dnOrder=&quot;0&quot; id=&quot;IRAM1_SIZE&quot;&gt;
     &lt;Values dnOrder=&quot;0&quot;&gt;
-      &lt;Dynamic dnOrder=&quot;0&quot; id=&quot;lib_classb_pic32cm_jh&quot; value=&quot;0xfc00&quot;/&gt;
+      &lt;Dynamic dnOrder=&quot;0&quot; id=&quot;lib_classb_pic32cm_jh&quot; value=&quot;0xffc0&quot;/&gt;
     &lt;/Values&gt;
   &lt;/core&gt;
 &lt;/core&gt;
@@ -605,7 +605,7 @@
          <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;core&gt;
   &lt;core dnOrder=&quot;0&quot; id=&quot;IRAM1_START&quot;&gt;
     &lt;Values dnOrder=&quot;0&quot;&gt;
-      &lt;Dynamic dnOrder=&quot;0&quot; id=&quot;lib_classb_pic32cm_jh&quot; value=&quot;0x20000400&quot;/&gt;
+      &lt;Dynamic dnOrder=&quot;0&quot; id=&quot;lib_classb_pic32cm_jh&quot; value=&quot;0x20000040&quot;/&gt;
     &lt;/Values&gt;
   &lt;/core&gt;
 &lt;/core&gt;
@@ -637,7 +637,9 @@
          <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="core" name="MCRAMC_INTERRUPT_ENABLE"/>
          <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;core&gt;
   &lt;core dnOrder=&quot;0&quot; id=&quot;MCRAMC_INTERRUPT_ENABLE&quot;&gt;
-    &lt;Values dnOrder=&quot;0&quot;/&gt;
+    &lt;Values dnOrder=&quot;0&quot;&gt;
+      &lt;Dynamic dnOrder=&quot;0&quot; id=&quot;lib_classb_pic32cm_jh&quot; value=&quot;true&quot;/&gt;
+    &lt;/Values&gt;
   &lt;/core&gt;
 &lt;/core&gt;
 </value>
@@ -647,7 +649,7 @@
          <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;core&gt;
   &lt;core dnOrder=&quot;0&quot; id=&quot;MCRAMC_INTERRUPT_ENABLE_UPDATE&quot;&gt;
     &lt;Values dnOrder=&quot;0&quot;&gt;
-      &lt;Dynamic dnOrder=&quot;0&quot; id=&quot;core&quot; value=&quot;true&quot;/&gt;
+      &lt;Dynamic dnOrder=&quot;0&quot; id=&quot;core&quot; value=&quot;false&quot;/&gt;
     &lt;/Values&gt;
   &lt;/core&gt;
 &lt;/core&gt;
@@ -657,7 +659,9 @@
          <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="core" name="MCRAMC_INTERRUPT_HANDLER"/>
          <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;core&gt;
   &lt;core dnOrder=&quot;0&quot; id=&quot;MCRAMC_INTERRUPT_HANDLER&quot;&gt;
-    &lt;Values dnOrder=&quot;0&quot;/&gt;
+    &lt;Values dnOrder=&quot;0&quot;&gt;
+      &lt;Dynamic dnOrder=&quot;0&quot; id=&quot;lib_classb_pic32cm_jh&quot; value=&quot;CLASSB_SRAM_ECC_InterruptHandler&quot;/&gt;
+    &lt;/Values&gt;
   &lt;/core&gt;
 &lt;/core&gt;
 </value>
@@ -709,7 +713,7 @@
          <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;core&gt;
   &lt;core dnOrder=&quot;0&quot; id=&quot;NVIC_5_0_ENABLE&quot;&gt;
     &lt;Values dnOrder=&quot;0&quot;&gt;
-      &lt;Dynamic dnOrder=&quot;0&quot; id=&quot;core&quot; value=&quot;false&quot;/&gt;
+      &lt;Dynamic dnOrder=&quot;0&quot; id=&quot;core&quot; value=&quot;true&quot;/&gt;
     &lt;/Values&gt;
   &lt;/core&gt;
 &lt;/core&gt;
@@ -720,7 +724,7 @@
          <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;core&gt;
   &lt;core dnOrder=&quot;0&quot; id=&quot;NVIC_5_0_HANDLER&quot;&gt;
     &lt;Values dnOrder=&quot;0&quot;&gt;
-      &lt;Dynamic dnOrder=&quot;0&quot; id=&quot;core&quot; value=&quot;MCRAMC_Handler&quot;/&gt;
+      &lt;Dynamic dnOrder=&quot;0&quot; id=&quot;core&quot; value=&quot;CLASSB_SRAM_ECC_InterruptHandler&quot;/&gt;
     &lt;/Values&gt;
   &lt;/core&gt;
 &lt;/core&gt;
@@ -732,6 +736,61 @@
   &lt;core dnOrder=&quot;0&quot; id=&quot;NVIC_5_0_HANDLER_LOCK&quot;&gt;
     &lt;Values dnOrder=&quot;0&quot;&gt;
       &lt;Dynamic dnOrder=&quot;0&quot; id=&quot;core&quot; value=&quot;false&quot;/&gt;
+    &lt;/Values&gt;
+  &lt;/core&gt;
+&lt;/core&gt;
+</value>
+      </entry>
+      <entry>
+         <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="core" name="NVIC_6_0_ENABLE"/>
+         <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;core&gt;
+  &lt;core dnOrder=&quot;0&quot; id=&quot;NVIC_6_0_ENABLE&quot;&gt;
+    &lt;Values dnOrder=&quot;0&quot;&gt;
+      &lt;Dynamic dnOrder=&quot;0&quot; id=&quot;core&quot; value=&quot;true&quot;/&gt;
+    &lt;/Values&gt;
+  &lt;/core&gt;
+&lt;/core&gt;
+</value>
+      </entry>
+      <entry>
+         <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="core" name="NVIC_6_0_HANDLER"/>
+         <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;core&gt;
+  &lt;core dnOrder=&quot;0&quot; id=&quot;NVIC_6_0_HANDLER&quot;&gt;
+    &lt;Values dnOrder=&quot;0&quot;&gt;
+      &lt;Dynamic dnOrder=&quot;0&quot; id=&quot;core&quot; value=&quot;CLASSB_FLASH_ECC_InterruptHandler&quot;/&gt;
+    &lt;/Values&gt;
+  &lt;/core&gt;
+&lt;/core&gt;
+</value>
+      </entry>
+      <entry>
+         <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="core" name="NVMCTRL_INTERRUPT_ENABLE"/>
+         <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;core&gt;
+  &lt;core dnOrder=&quot;0&quot; id=&quot;NVMCTRL_INTERRUPT_ENABLE&quot;&gt;
+    &lt;Values dnOrder=&quot;0&quot;&gt;
+      &lt;Dynamic dnOrder=&quot;0&quot; id=&quot;lib_classb_pic32cm_jh&quot; value=&quot;true&quot;/&gt;
+    &lt;/Values&gt;
+  &lt;/core&gt;
+&lt;/core&gt;
+</value>
+      </entry>
+      <entry>
+         <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="core" name="NVMCTRL_INTERRUPT_ENABLE_UPDATE"/>
+         <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;core&gt;
+  &lt;core dnOrder=&quot;0&quot; id=&quot;NVMCTRL_INTERRUPT_ENABLE_UPDATE&quot;&gt;
+    &lt;Values dnOrder=&quot;0&quot;&gt;
+      &lt;Dynamic dnOrder=&quot;0&quot; id=&quot;core&quot; value=&quot;false&quot;/&gt;
+    &lt;/Values&gt;
+  &lt;/core&gt;
+&lt;/core&gt;
+</value>
+      </entry>
+      <entry>
+         <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="core" name="NVMCTRL_INTERRUPT_HANDLER"/>
+         <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;core&gt;
+  &lt;core dnOrder=&quot;0&quot; id=&quot;NVMCTRL_INTERRUPT_HANDLER&quot;&gt;
+    &lt;Values dnOrder=&quot;0&quot;&gt;
+      &lt;Dynamic dnOrder=&quot;0&quot; id=&quot;lib_classb_pic32cm_jh&quot; value=&quot;CLASSB_FLASH_ECC_InterruptHandler&quot;/&gt;
     &lt;/Values&gt;
   &lt;/core&gt;
 &lt;/core&gt;
@@ -1426,12 +1485,48 @@
          <value>__ROOTVIEW</value>
       </entry>
       <entry>
+         <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="lib_classb_pic32cm_jh" name="CLASSB_CLOCK_TEST_DURATION"/>
+         <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;lib_classb_pic32cm_jh&gt;
+  &lt;lib_classb_pic32cm_jh dnOrder=&quot;0&quot; id=&quot;CLASSB_CLOCK_TEST_DURATION&quot;&gt;
+    &lt;Values dnOrder=&quot;0&quot;/&gt;
+  &lt;/lib_classb_pic32cm_jh&gt;
+&lt;/lib_classb_pic32cm_jh&gt;
+</value>
+      </entry>
+      <entry>
          <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="lib_classb_pic32cm_jh" name="CLASSB_CLOCK_TEST_OPT"/>
          <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;lib_classb_pic32cm_jh&gt;
   &lt;lib_classb_pic32cm_jh dnOrder=&quot;0&quot; id=&quot;CLASSB_CLOCK_TEST_OPT&quot;&gt;
     &lt;Values dnOrder=&quot;0&quot;&gt;
       &lt;User dnOrder=&quot;0&quot; value=&quot;true&quot;/&gt;
     &lt;/Values&gt;
+  &lt;/lib_classb_pic32cm_jh&gt;
+&lt;/lib_classb_pic32cm_jh&gt;
+</value>
+      </entry>
+      <entry>
+         <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="lib_classb_pic32cm_jh" name="CLASSB_CLOCK_TEST_PERCENT"/>
+         <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;lib_classb_pic32cm_jh&gt;
+  &lt;lib_classb_pic32cm_jh dnOrder=&quot;0&quot; id=&quot;CLASSB_CLOCK_TEST_PERCENT&quot;&gt;
+    &lt;Values dnOrder=&quot;0&quot;/&gt;
+  &lt;/lib_classb_pic32cm_jh&gt;
+&lt;/lib_classb_pic32cm_jh&gt;
+</value>
+      </entry>
+      <entry>
+         <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="lib_classb_pic32cm_jh" name="CLASSB_CPU_CLOCK_TEST_ACCUR"/>
+         <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;lib_classb_pic32cm_jh&gt;
+  &lt;lib_classb_pic32cm_jh dnOrder=&quot;0&quot; id=&quot;CLASSB_CPU_CLOCK_TEST_ACCUR&quot;&gt;
+    &lt;Values dnOrder=&quot;0&quot;/&gt;
+  &lt;/lib_classb_pic32cm_jh&gt;
+&lt;/lib_classb_pic32cm_jh&gt;
+</value>
+      </entry>
+      <entry>
+         <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="lib_classb_pic32cm_jh" name="CLASSB_CPU_MAX_CLOCK"/>
+         <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;lib_classb_pic32cm_jh&gt;
+  &lt;lib_classb_pic32cm_jh dnOrder=&quot;0&quot; id=&quot;CLASSB_CPU_MAX_CLOCK&quot;&gt;
+    &lt;Values dnOrder=&quot;0&quot;/&gt;
   &lt;/lib_classb_pic32cm_jh&gt;
 &lt;/lib_classb_pic32cm_jh&gt;
 </value>
@@ -1459,12 +1554,39 @@
 </value>
       </entry>
       <entry>
+         <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="lib_classb_pic32cm_jh" name="CLASSB_FLASH_SIZE"/>
+         <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;lib_classb_pic32cm_jh&gt;
+  &lt;lib_classb_pic32cm_jh dnOrder=&quot;0&quot; id=&quot;CLASSB_FLASH_SIZE&quot;&gt;
+    &lt;Values dnOrder=&quot;0&quot;/&gt;
+  &lt;/lib_classb_pic32cm_jh&gt;
+&lt;/lib_classb_pic32cm_jh&gt;
+</value>
+      </entry>
+      <entry>
          <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="lib_classb_pic32cm_jh" name="CLASSB_INTERRUPT_TEST_OPT"/>
          <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;lib_classb_pic32cm_jh&gt;
   &lt;lib_classb_pic32cm_jh dnOrder=&quot;0&quot; id=&quot;CLASSB_INTERRUPT_TEST_OPT&quot;&gt;
     &lt;Values dnOrder=&quot;0&quot;&gt;
       &lt;User dnOrder=&quot;0&quot; value=&quot;true&quot;/&gt;
     &lt;/Values&gt;
+  &lt;/lib_classb_pic32cm_jh&gt;
+&lt;/lib_classb_pic32cm_jh&gt;
+</value>
+      </entry>
+      <entry>
+         <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="lib_classb_pic32cm_jh" name="CLASSB_RTC_EXPECTED_CLOCK"/>
+         <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;lib_classb_pic32cm_jh&gt;
+  &lt;lib_classb_pic32cm_jh dnOrder=&quot;0&quot; id=&quot;CLASSB_RTC_EXPECTED_CLOCK&quot;&gt;
+    &lt;Values dnOrder=&quot;0&quot;/&gt;
+  &lt;/lib_classb_pic32cm_jh&gt;
+&lt;/lib_classb_pic32cm_jh&gt;
+</value>
+      </entry>
+      <entry>
+         <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="lib_classb_pic32cm_jh" name="CLASSB_SRAM_APP_START"/>
+         <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;lib_classb_pic32cm_jh&gt;
+  &lt;lib_classb_pic32cm_jh dnOrder=&quot;0&quot; id=&quot;CLASSB_SRAM_APP_START&quot;&gt;
+    &lt;Values dnOrder=&quot;0&quot;/&gt;
   &lt;/lib_classb_pic32cm_jh&gt;
 &lt;/lib_classb_pic32cm_jh&gt;
 </value>
@@ -1481,53 +1603,95 @@
 </value>
       </entry>
       <entry>
-         <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="lib_classb_pic32cm_jh" name="CLASSB_SYS_FLASH_INT_C_SYM"/>
+         <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="lib_classb_pic32cm_jh" name="CLASSB_SRAM_RESERVE_SIZE"/>
          <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;lib_classb_pic32cm_jh&gt;
-  &lt;lib_classb_pic32cm_jh dnOrder=&quot;0&quot; id=&quot;CLASSB_SYS_FLASH_INT_C_SYM&quot;&gt;
-    &lt;Attributes dnOrder=&quot;0&quot;&gt;
-      &lt;Boolean dnOrder=&quot;0&quot; id=&quot;enabled&quot;&gt;
-        &lt;Value dnOrder=&quot;0&quot;&gt;true&lt;/Value&gt;
-      &lt;/Boolean&gt;
-    &lt;/Attributes&gt;
+  &lt;lib_classb_pic32cm_jh dnOrder=&quot;0&quot; id=&quot;CLASSB_SRAM_RESERVE_SIZE&quot;&gt;
+    &lt;Values dnOrder=&quot;0&quot;/&gt;
   &lt;/lib_classb_pic32cm_jh&gt;
 &lt;/lib_classb_pic32cm_jh&gt;
 </value>
       </entry>
       <entry>
-         <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="lib_classb_pic32cm_jh" name="CLASSB_SYS_FLASH_INT_H_SYM"/>
+         <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="lib_classb_pic32cm_jh" name="CLASSB_SRAM_SIZE"/>
          <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;lib_classb_pic32cm_jh&gt;
-  &lt;lib_classb_pic32cm_jh dnOrder=&quot;0&quot; id=&quot;CLASSB_SYS_FLASH_INT_H_SYM&quot;&gt;
-    &lt;Attributes dnOrder=&quot;0&quot;&gt;
-      &lt;Boolean dnOrder=&quot;0&quot; id=&quot;enabled&quot;&gt;
-        &lt;Value dnOrder=&quot;0&quot;&gt;true&lt;/Value&gt;
-      &lt;/Boolean&gt;
-    &lt;/Attributes&gt;
+  &lt;lib_classb_pic32cm_jh dnOrder=&quot;0&quot; id=&quot;CLASSB_SRAM_SIZE&quot;&gt;
+    &lt;Values dnOrder=&quot;0&quot;/&gt;
   &lt;/lib_classb_pic32cm_jh&gt;
 &lt;/lib_classb_pic32cm_jh&gt;
 </value>
       </entry>
       <entry>
-         <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="lib_classb_pic32cm_jh" name="CLASSB_SYS_SRAM_INT_C_SYM"/>
+         <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="lib_classb_pic32cm_jh" name="CLASSB_SRAM_START_ADDRESS"/>
          <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;lib_classb_pic32cm_jh&gt;
-  &lt;lib_classb_pic32cm_jh dnOrder=&quot;0&quot; id=&quot;CLASSB_SYS_SRAM_INT_C_SYM&quot;&gt;
-    &lt;Attributes dnOrder=&quot;0&quot;&gt;
-      &lt;Boolean dnOrder=&quot;0&quot; id=&quot;enabled&quot;&gt;
-        &lt;Value dnOrder=&quot;0&quot;&gt;true&lt;/Value&gt;
-      &lt;/Boolean&gt;
-    &lt;/Attributes&gt;
+  &lt;lib_classb_pic32cm_jh dnOrder=&quot;0&quot; id=&quot;CLASSB_SRAM_START_ADDRESS&quot;&gt;
+    &lt;Values dnOrder=&quot;0&quot;/&gt;
   &lt;/lib_classb_pic32cm_jh&gt;
 &lt;/lib_classb_pic32cm_jh&gt;
 </value>
       </entry>
       <entry>
-         <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="lib_classb_pic32cm_jh" name="CLASSB_SYS_SRAM_INT_H_SYM"/>
+         <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="lib_classb_pic32cm_jh" name="CLASSB_SRAM_START_MSB"/>
          <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;lib_classb_pic32cm_jh&gt;
-  &lt;lib_classb_pic32cm_jh dnOrder=&quot;0&quot; id=&quot;CLASSB_SYS_SRAM_INT_H_SYM&quot;&gt;
-    &lt;Attributes dnOrder=&quot;0&quot;&gt;
-      &lt;Boolean dnOrder=&quot;0&quot; id=&quot;enabled&quot;&gt;
-        &lt;Value dnOrder=&quot;0&quot;&gt;true&lt;/Value&gt;
-      &lt;/Boolean&gt;
-    &lt;/Attributes&gt;
+  &lt;lib_classb_pic32cm_jh dnOrder=&quot;0&quot; id=&quot;CLASSB_SRAM_START_MSB&quot;&gt;
+    &lt;Values dnOrder=&quot;0&quot;/&gt;
+  &lt;/lib_classb_pic32cm_jh&gt;
+&lt;/lib_classb_pic32cm_jh&gt;
+</value>
+      </entry>
+      <entry>
+         <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="lib_classb_pic32cm_jh" name="CLASSB_SYSTICK_MAXCOUNT"/>
+         <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;lib_classb_pic32cm_jh&gt;
+  &lt;lib_classb_pic32cm_jh dnOrder=&quot;0&quot; id=&quot;CLASSB_SYSTICK_MAXCOUNT&quot;&gt;
+    &lt;Values dnOrder=&quot;0&quot;/&gt;
+  &lt;/lib_classb_pic32cm_jh&gt;
+&lt;/lib_classb_pic32cm_jh&gt;
+</value>
+      </entry>
+      <entry>
+         <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="lib_classb_pic32cm_jh" name="CLASSB_SYS_FLASH_INT_SYM"/>
+         <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;lib_classb_pic32cm_jh&gt;
+  &lt;lib_classb_pic32cm_jh dnOrder=&quot;0&quot; id=&quot;CLASSB_SYS_FLASH_INT_SYM&quot;&gt;
+    &lt;Values dnOrder=&quot;0&quot;&gt;
+      &lt;Dynamic dnOrder=&quot;0&quot; id=&quot;lib_classb_pic32cm_jh&quot; value=&quot;CLASSB_FLASH_ECC_InterruptHandler&quot;/&gt;
+    &lt;/Values&gt;
+  &lt;/lib_classb_pic32cm_jh&gt;
+&lt;/lib_classb_pic32cm_jh&gt;
+</value>
+      </entry>
+      <entry>
+         <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="lib_classb_pic32cm_jh" name="CLASSB_SYS_SRAM_INT_SYM"/>
+         <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;lib_classb_pic32cm_jh&gt;
+  &lt;lib_classb_pic32cm_jh dnOrder=&quot;0&quot; id=&quot;CLASSB_SYS_SRAM_INT_SYM&quot;&gt;
+    &lt;Values dnOrder=&quot;0&quot;&gt;
+      &lt;Dynamic dnOrder=&quot;0&quot; id=&quot;lib_classb_pic32cm_jh&quot; value=&quot;CLASSB_SRAM_ECC_InterruptHandler&quot;/&gt;
+    &lt;/Values&gt;
+  &lt;/lib_classb_pic32cm_jh&gt;
+&lt;/lib_classb_pic32cm_jh&gt;
+</value>
+      </entry>
+      <entry>
+         <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="lib_classb_pic32cm_jh" name="DEVICE_NAME"/>
+         <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;lib_classb_pic32cm_jh&gt;
+  &lt;lib_classb_pic32cm_jh dnOrder=&quot;0&quot; id=&quot;DEVICE_NAME&quot;&gt;
+    &lt;Values dnOrder=&quot;0&quot;/&gt;
+  &lt;/lib_classb_pic32cm_jh&gt;
+&lt;/lib_classb_pic32cm_jh&gt;
+</value>
+      </entry>
+      <entry>
+         <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="lib_classb_pic32cm_jh" name="REL_VER"/>
+         <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;lib_classb_pic32cm_jh&gt;
+  &lt;lib_classb_pic32cm_jh dnOrder=&quot;0&quot; id=&quot;REL_VER&quot;&gt;
+    &lt;Values dnOrder=&quot;0&quot;/&gt;
+  &lt;/lib_classb_pic32cm_jh&gt;
+&lt;/lib_classb_pic32cm_jh&gt;
+</value>
+      </entry>
+      <entry>
+         <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="lib_classb_pic32cm_jh" name="REL_YEAR"/>
+         <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;lib_classb_pic32cm_jh&gt;
+  &lt;lib_classb_pic32cm_jh dnOrder=&quot;0&quot; id=&quot;REL_YEAR&quot;&gt;
+    &lt;Values dnOrder=&quot;0&quot;/&gt;
   &lt;/lib_classb_pic32cm_jh&gt;
 &lt;/lib_classb_pic32cm_jh&gt;
 </value>
@@ -3018,7 +3182,7 @@
       </entry>
       <entry>
          <file>..\src\config\classb_api_usage\definitions.h</file>
-         <hash>e1bdcab38a7eb8c6bb7e8ff382744bc1e1666c79d6e7f326080b5efbd1f6fa12</hash>
+         <hash>2c907fc3d5e7da618d858d93a2e61d106e673d504eec8d17f9786e72494aaa97</hash>
       </entry>
       <entry>
          <file>..\src\packs\PIC32CM5164JH01100_DFP\instance\tc3.h</file>
@@ -3062,7 +3226,7 @@
       </entry>
       <entry>
          <file>..\src\config\classb_api_usage\initialization.c</file>
-         <hash>3aa278cbfbc7459ad1abaff299223bdf555a7117c9e9a195d9b5639e97f3bc5a</hash>
+         <hash>5b9ef1fa3a985b417ed147e31ab2ee971dec75059be0c8652e291d7784a077d3</hash>
       </entry>
       <entry>
          <file>..\src\packs\PIC32CM5164JH01100_DFP\instance\fuses.h</file>
@@ -3230,7 +3394,7 @@
       </entry>
       <entry>
          <file>..\src\config\classb_api_usage\peripheral\nvic\plib_nvic.c</file>
-         <hash>056a589ef1f8f3bbb9c37fd4685b97207b957116104636b2ead4e442cc135a46</hash>
+         <hash>d005feb0fcf43e70a6c8a391dba7b4ff81bb48de1a82fb504d59ae763929a1ce</hash>
       </entry>
       <entry>
          <file>..\src\packs\PIC32CM5164JH01100_DFP\instance\mtb.h</file>
@@ -3350,7 +3514,7 @@
       </entry>
       <entry>
          <file>..\src\config\classb_api_usage\interrupts.h</file>
-         <hash>239fb9192af37942268fe08362912aa0bbfc0a6afe40adfe5b4182cceb9eb660</hash>
+         <hash>c113c0c8f39255fcb2c4f8897ff63dfdc3358cad90e0671187a5709e889654f4</hash>
       </entry>
       <entry>
          <file>..\src\packs\PIC32CM5164JH01100_DFP\instance\pac.h</file>
@@ -3382,7 +3546,7 @@
       </entry>
       <entry>
          <file>..\src\config\classb_api_usage\interrupts.c</file>
-         <hash>66856631abdb09061d093bc0ed6923f13c422e4305b87fff1ff1e39bd8438f04</hash>
+         <hash>60bb7375a6328507724268412fd401be216cbc5c06278c944022e62a853fc95e</hash>
       </entry>
       <entry>
          <file>..\src\packs\PIC32CM5164JH01100_DFP\component\ptc.h</file>
