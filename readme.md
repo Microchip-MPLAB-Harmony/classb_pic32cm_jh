@@ -1,8 +1,4 @@
-﻿---
-title: Harmony 3 Class B Library
-nav_order: 1
-has_children: true
----
+﻿
 
 ![Microchip logo](https://raw.githubusercontent.com/wiki/Microchip-MPLAB-Harmony/Microchip-MPLAB-Harmony.github.io/images/microchip_logo.png)
 ![Harmony logo small](https://raw.githubusercontent.com/wiki/Microchip-MPLAB-Harmony/Microchip-MPLAB-Harmony.github.io/images/microchip_mplab_harmony_logo_small.png)
@@ -33,23 +29,40 @@ the microcontroller which can result in an unsafe state of the appliance.
 - [MPLAB® Harmony 3 PIC32CM JH Class B Library Wiki](https://github.com/Microchip-MPLAB-Harmony/classb_pic32cm_jh/wiki)
 - [MPLAB® Harmony 3 PIC32CM JH Class B Library API Help](https://microchip-mplab-harmony.github.io/classb_pic32cm_jh)
 
-# Contents Summary
+
+## Contents Summary
 
 | Folder     | Description                                               |
 | ---        | ---                                                       |
-| apps        | Example applications for replaceme library components      |
-| config     | replaceme module configuration file                        |
-| docs       | replaceme library help documentation                       |
-| drivers    | Driver/Firmware files for different products              |
+| apps       | Example applications for Class B Library     |
+| config     | Class B Library module configuration file                       |
+| docs       | Class B Library help documentation                      |
+| templates  | Class B Library templates and configuration data       |
 
+
+## Code Examples
+
+The following applications are provided to demonstrate the typical or interesting usage models of this Class B library.
+
+| Examples | Status |
+| --- | :---: |
+| classb_api_usage | ![app-release](https://img.shields.io/badge/application-release-green?style=plastic) |
+
+# Supported Devices Families
+ 
+## PIC32CM JH Class B Library
+
+| Devices Family | Status |
+| --- | :---: |
+| [PIC32CM JH](docs/index.html) | ![middleware-release](https://img.shields.io/badge/middleware-release-green?style=plastic) |
 
 ____
 
-[![License](https://img.shields.io/badge/license-Harmony%20license-orange.svg)](https://github.com/Microchip-MPLAB-Harmony/replaceme/blob/master/mplab_harmony_license.md)
-[![Latest release](https://img.shields.io/github/release/Microchip-MPLAB-Harmony/replaceme.svg)](https://github.com/Microchip-MPLAB-Harmony/replaceme/releases/latest)
-[![Latest release date](https://img.shields.io/github/release-date/Microchip-MPLAB-Harmony/replaceme.svg)](https://github.com/Microchip-MPLAB-Harmony/replaceme/releases/latest)
-[![Commit activity](https://img.shields.io/github/commit-activity/y/Microchip-MPLAB-Harmony/replaceme.svg)](https://github.com/Microchip-MPLAB-Harmony/replaceme/graphs/commit-activity)
-[![Contributors](https://img.shields.io/github/contributors-anon/Microchip-MPLAB-Harmony/replaceme.svg)]()
+[![License](https://img.shields.io/badge/license-Harmony%20license-orange.svg)](https://github.com/Microchip-MPLAB-Harmony/classb_pic32cm_jh/blob/master/mplab_harmony_license.md)
+[![Latest release](https://img.shields.io/github/release/Microchip-MPLAB-Harmony/classb_pic32cm_jh.svg)](https://github.com/Microchip-MPLAB-Harmony/classb_pic32cm_jh/releases/latest)
+[![Latest release date](https://img.shields.io/github/release-date/Microchip-MPLAB-Harmony/classb_pic32cm_jh.svg)](https://github.com/Microchip-MPLAB-Harmony/classb_pic32cm_jh/releases/latest)
+[![Commit activity](https://img.shields.io/github/commit-activity/y/Microchip-MPLAB-Harmony/classb_pic32cm_jh.svg)](https://github.com/Microchip-MPLAB-Harmony/classb_pic32cm_jh/graphs/commit-activity)
+[![Contributors](https://img.shields.io/github/contributors-anon/Microchip-MPLAB-Harmony/classb_pic32cm_jh.svg)]()
 
 ____
 
@@ -58,7 +71,7 @@ ____
 [![Follow us on Facebook](https://img.shields.io/badge/Facebook-Follow%20us%20on%20Facebook-blue.svg)](https://www.facebook.com/microchiptechnology/)
 [![Follow us on Twitter](https://img.shields.io/twitter/follow/MicrochipTech.svg?style=social)](https://twitter.com/MicrochipTech)
 
-[![](https://img.shields.io/github/stars/Microchip-MPLAB-Harmony/replaceme.svg?style=social)]()
-[![](https://img.shields.io/github/watchers/Microchip-MPLAB-Harmony/replaceme.svg?style=social)]()
+[![](https://img.shields.io/github/stars/Microchip-MPLAB-Harmony/classb_pic32cm_jh.svg?style=social)]()
+[![](https://img.shields.io/github/watchers/Microchip-MPLAB-Harmony/classb_pic32cm_jh.svg?style=social)]()
 
 
