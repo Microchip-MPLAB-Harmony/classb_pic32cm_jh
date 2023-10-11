@@ -1,7 +1,13 @@
-﻿![Microchip logo](https://raw.githubusercontent.com/wiki/Microchip-MPLAB-Harmony/Microchip-MPLAB-Harmony.github.io/images/microchip_logo.png)
+﻿---
+title: Harmony 3 Class B Library
+nav_order: 1
+has_children: true
+---
+
+![Microchip logo](https://raw.githubusercontent.com/wiki/Microchip-MPLAB-Harmony/Microchip-MPLAB-Harmony.github.io/images/microchip_logo.png)
 ![Harmony logo small](https://raw.githubusercontent.com/wiki/Microchip-MPLAB-Harmony/Microchip-MPLAB-Harmony.github.io/images/microchip_mplab_harmony_logo_small.png)
 
-# MPLAB® Harmony 3 replaceme
+# MPLAB® Harmony 3 Class B Library for PIC32CM JH devices
 
 MPLAB® Harmony 3 is an extension of the MPLAB® ecosystem for creating
 embedded firmware solutions for Microchip 32-bit SAM and PIC® microcontroller
@@ -13,18 +19,19 @@ and microprocessor devices.  Refer to the following links for more information.
 - [Microchip MPLAB® Harmony](https://www.microchip.com/mplab/mplab-harmony)
 - [Microchip MPLAB® Harmony Pages](https://microchip-mplab-harmony.github.io/)
 
-This repository contains the MPLAB® Harmony 3 replaceme solutions and example applications.
-Quickly incorporate connectivity to your designs with replaceme ICs, modules,
-software and development kits that make connecting effortless for your customers.
-Our comprehensive replaceme portfolio has the technology to meet your range,
-data rate, interoperability, frequency and topology needs. Refer to
-the following links for release notes, training materials, and interface
-reference information.
+This repository contains the MPLAB® Harmony 3 Class B Library which implements
+several test and diagnostic methods that support the IEC 60730 standard for
+the safe operation of an electronically controlled equipment for household use.
+Annex H of the IEC 60730 standard defines ‘Class B’ software.
+The Class B Library available in MPLAB® Harmony 3 implements several
+test and diagnostic methods that fall into the Class B category.
+It uses various measures to detect and respond to failures inside
+the microcontroller which can result in an unsafe state of the appliance.
 
 - [Release Notes](./release_notes.md)
 - [MPLAB® Harmony License](mplab_harmony_license.md)
-- [MPLAB® Harmony 3 replaceme Wiki](https://github.com/Microchip-MPLAB-Harmony/replaceme/wiki)
-- [MPLAB® Harmony 3 replaceme API Help](https://microchip-mplab-harmony.github.io/replaceme)
+- [MPLAB® Harmony 3 PIC32CM JH Class B Library Wiki](https://github.com/Microchip-MPLAB-Harmony/classb_pic32cm_jh/wiki)
+- [MPLAB® Harmony 3 PIC32CM JH Class B Library API Help](https://microchip-mplab-harmony.github.io/classb_pic32cm_jh)
 
 # Contents Summary
 

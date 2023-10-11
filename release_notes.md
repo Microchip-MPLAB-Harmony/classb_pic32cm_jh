@@ -3,29 +3,17 @@
 
 # Microchip MPLAB® Harmony 3 Release Notes
 
-## Class B Release v1.0
-### New Features
+## PIC32CM JH Class B Release v1.0.0
+### New features
+1. Initial version of the Class B Library for PIC32CM JH devices
 
-- **New part support** - This release introduces initial support for <fill me>.
+### Known issues
+None.
 
-- **Development kit and demo application support** - The following table provides number of peripheral library application available for different development kits
-
-    | Development Kits                                                                                                                               | Number of applications |
-    | ---                                                                                                                                            | --- |
-    | [SAM D21 Xplained Pro Evaluation Kit](https://www.microchip.com/DevelopmentTools/ProductDetails.aspx?PartNO=ATSAMD21-XPRO)                     | 8 |
-
-
-
-### Known Issues
-
-The current known issues are as follows:
-
-* <fill me>
 
 ### Development Tools
 
-* [MPLAB® X IDE v5.20](https://www.microchip.com/mplab/mplab-x-ide)
-* [MPLAB® XC32 C/C++ Compiler v2.20](https://www.microchip.com/mplab/compilers)
-* [IAR Embedded Workbench® for ARM® (v8.32 or above)](https://www.iar.com/iar-embedded-workbench/#!?architecture=Arm)
+* [MPLAB® X IDE v6.10](https://www.microchip.com/mplab/mplab-x-ide)
+* [MPLAB® XC32 C/C++ Compiler v4.30](https://www.microchip.com/mplab/compilers)
 * MPLAB® X IDE plug-ins:
-    * MPLAB® Harmony Configurator (MHC) v3.3.0.0 and above.
+    * MPLAB® Code Configurator (MCC) v5.3.7 and above.
