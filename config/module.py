@@ -22,14 +22,17 @@
 * ANY WAY RELATED TO THIS SOFTWARE WILL NOT EXCEED THE AMOUNT OF FEES, IF ANY,
 * THAT YOU HAVE PAID DIRECTLY TO MICROCHIP FOR THIS SOFTWARE.
 *****************************************************************************"""
-supportedDevices = ["PIC32CM"]
+supportedDeviceFamily = ["PIC32CM"]
+supportedDeviceParts = ["JH"]
+
 notSupportedVariants = []
 
 def loadModule():
     print("Load Module: Harmony Class B Library")
     device_name = Variables.get("__PROCESSOR")
-    for x in supportedDevices:
-        if x in device_name:
-            if device_name not in notSupportedVariants:
-                classBComponent = Module.CreateComponent("lib_classb_pic32cm_jh", "Class B Library PIC32CM_JH", "/ClassB/", "config/classb_pic32cm_jh.py")
+    for x in supportedDeviceFamily:
+        for x in supportedDeviceParts:
+            if x in device_name:
+                if device_name not in notSupportedVariants:
+                    classBComponent = Module.CreateComponent("lib_classb_pic32cm_jh", "Class B Library PIC32CM_JH", "/ClassB/", "config/classb_pic32cm_jh.py")
 

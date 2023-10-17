@@ -1,0 +1,15 @@
+package:
+  format-version: "1.0.0"
+  name: "classb_pic32cm_jh"
+  type: "api"
+  status: "production"
+  required: false
+  version: "v1.0.0"
+
+  dependencies:
+    - name: "csp"
+      type: "package"
+      version: "v3.17.0"
+    - name: "bsp"
+      type: "package"
+      version: "v3.17.0"
