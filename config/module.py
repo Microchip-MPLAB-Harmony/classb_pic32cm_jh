@@ -31,8 +31,8 @@ def loadModule():
     print("Load Module: Harmony Class B Library")
     device_name = Variables.get("__PROCESSOR")
     for x in supportedDeviceFamily:
-        for x in supportedDeviceParts:
-            if x in device_name:
+        for y in supportedDeviceParts:
+            if ((x in device_name) and (y in device_name)):
                 if device_name not in notSupportedVariants:
                     classBComponent = Module.CreateComponent("lib_classb_pic32cm_jh", "Class B Library PIC32CM_JH", "/ClassB/", "config/classb_pic32cm_jh.py")
 
